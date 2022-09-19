@@ -12,41 +12,31 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	char	*area;
-
-	area = (char *)malloc((count * size) * sizeof(*area));
-	if (area == 0)
-		return (0);
-	ft_bzero(area, count * size);
-	return (area);
-}
-
 char	*get_next_line(int fd)
 {
-	static char	buf[BUFFER_SIZE];
-	char		*a;
-	char		*b;
-	long		c;
-	int			s;
+    int             answer;
+    static char     buffer[BUFFER_SIZE + 1];
+    char            *data_reader;
 
-	s = 0;
-	if (!a)
-		a = (char *)ft_calloc(BUFFER_SIZE + 1);
+    data_reader = 0;
+    if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE <= 0)
+        return (NULL);
+    answer = 1;
+    while (answer > 0)
+    {
+        if (!*buffer)
+            answer = read(fd, buffer, BUFFER_SIZE);
+        if (answer > 0)
+            data_reader = ft_strjoin(data_reader, buffer);
+        if (buffer_cleaner(buffer) || answer < 1)
+            break ;
+    }
+    return (data_reader);
 }
+
+
+
+
+
+
+

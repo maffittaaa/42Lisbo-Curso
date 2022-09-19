@@ -12,97 +12,65 @@
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlen(const char *str)
 {
-	char	*s3;
-	char	*i;
+    size_t	i;
 
-	i = NULL;
-	s3 = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(*s3));
-	if (!s3)
-		return (NULL);
-	if (s3 && s1 && s2)
-	{
-		i = s3;
-		while (*s1 != '\0')
-		{
-			*s3 = (char)*s1;
-			s3++;
-			s1++;
-		}
-		while (*s2 != '\0')
-		{
-			*s3 = (char)*s2;
-			s3++;
-			s2++;
-		}
-	}
-	*s3 = '\0';
-	return (i);
+    i = 0;
+    while (str && str[i] != '\0')
+    {
+        if (str[i] == '\n')
+            return (i + 1); // saber a posicao do \0
+        i++;
+    }
+    return (i);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_strjoin(char *data_reader, char *buffer)
 {
-	int	i;
+    int     a;
+    int     b;
+    char    *holder;
 
-	i = 0;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
+    a = 0;
+    holder = malloc(ft_strlen(data_reader) + ft_strlen(buffer) + 1); //aloca memoria do tamanho do data_reader e do buffer + \0
+    if (holder == NULL)
+        return (NULL);
+    while (data_reader && data_reader[a]) //os bytes que o data_reader leu vao ser guardados no holder para poderem ser passados depois para o buffer;
+    {
+        holder[a] = data_reader[a];
+        a++;
+    }
+    b = 0;
+    while (buffer[b] != '\0')
+    {
+        holder[a] = buffer[b];
+        a++;
+        if (buffer[b++] == '\n')// se for \n da break para o programa perceber que encontrou o fim da linha;
+            break ;
+
+    }
+    holder[a] = '\0';
+    if (data_reader)
+        free(data_reader);
+    return (holder);
 }
 
-char	*ft_strchr(const char *s, int c)
+int     buffer_cleaner(char *buffer)
 {
-	char	*st;
+    int a;
+    int b;
+    int check;
 
-	st = (char *)s;
-	while (*st != '\0')
-	{
-		if (*st == (char) c)
-			return (st);
-		st++;
-	}
-	if ((char) c == *st)
-		return (st);
-	return (NULL);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char			*substr;
-	unsigned int	i;
-	unsigned int	e;
-
-	i = 0;
-	e = 0;
-	substr = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!substr)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		if (i >= start && e < len)
-		{
-			substr[e] = s[i];
-			e++;
-		}
-		i++;
-	}
-	substr[e] = '\0';
-	return (substr);
-}
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*ss;
-
-	ss = (char *)s;
-	i = 0;
-	while (i < n)
-	{
-		ss[i] = 0;
-		i++;
-	}
+    a = -1;
+    b = -1;
+    while (buffer[++a])
+    {
+        if (check)
+            buffer[++b] = buffer[a];
+        if (buffer[a] == '\n')
+            check = 1;
+        buffer[a] = 0;
+    }
+    return (check);
 }
