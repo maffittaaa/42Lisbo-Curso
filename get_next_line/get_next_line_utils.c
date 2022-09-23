@@ -64,7 +64,8 @@ int     buffer_cleaner(char *buffer)
 
     a = -1;
     b = -1;
-    while (buffer[++a])
+    check = 0;
+   while (buffer[++a])
     {
         if (check)
             buffer[++b] = buffer[a];
