@@ -31,7 +31,7 @@
 
 #define	MLX_H
 
-
+int     main(void);
 void	*mlx_init();
 /*
 **  needed before everything else.
