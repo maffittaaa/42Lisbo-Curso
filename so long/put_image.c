@@ -10,33 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
-
-#include <X11/X.h>
-#include <X11/keysym.h>
-#include <mlx.h>
-
-# define MLX_ERROR 1
-
-# define BLACK_PIXEL 0x000000
-
-typedef struct s_img
-{
-	void    *mlx_img;
-	char    *addr;
-	int     bpp; // bits per pixel
-	int     line_len;
-	int     endian;
-}   t_img;
-
-typedef struct s_data
-{
-	void    *mlx_ptr;
-	void    *win_ptr;
-	t_img   img;
-	int 	cur_img;
-}   t_data;
+#include "so_long.h"
 
 void    render_background(t_data *data, int color)
 {
@@ -56,12 +30,23 @@ void    render_background(t_data *data, int color)
 	}
 }
 
+int render(t_data *data)
+{
+    if (data->win_ptr == NULL)
+        return (1);
+    //render_background(data->img.mlx_img, BLACK_PIXEL);
+    mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img.mlx_img, 0, 0);
+
+    return (0);
+}
+
 int handle_keypress(int keysym, t_data *data)
 {
 	if (keysym == XK_Escape)
 	{
 		mlx_destroy_window (data->mlx_ptr, data->win_ptr);
 		data->win_ptr = NULL;
+		exit(0);
 	}
 
 	printf("Keypress: %d\n", keysym);
@@ -71,24 +56,30 @@ int handle_keypress(int keysym, t_data *data)
 int main(void)
 {
 	t_data data;
-	char 	*relative_path = "./SHREKfrente.xpm";
-	int 	img_width;
-	int 	img_height;
+	int width;
+	int height;
 
+	width = 600;
+	height = 300;
+
+	data.relative_path = ft_strdup("images/teapot.xpm");
 	data.mlx_ptr = mlx_init();
 	if (data.mlx_ptr == NULL)
 		return (MLX_ERROR);
-	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT, "SHREK!");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH,
+		WINDOW_HEIGHT, "SHREK!");
 	if (data.win_ptr == NULL)
 	{
 		free(data.win_ptr);
 		return (MLX_ERROR);
 	}
-	mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, relative_path, &img_width, &img_height)
-	data.img.addr = mlx_get_data_addr(data.relative_path, &data.img.bpp, &data.img.line_len, &data.img.endian);
 
+	data.img.mlx_img = mlx_xpm_file_to_image(data.mlx_ptr, data.relative_path, &width, &height);
+	if (!data.img.mlx_img)
+		ft_putstr_fd("lol\n", 1);
+	data.img.addr= mlx_get_data_addr(&(data.img), &data.img.bpp, &data.img.line_len, &data.img.endian);
+	render(&data);
 	mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
-
 	mlx_loop(data.mlx_ptr);
 
 	mlx_destroy_display(data.mlx_ptr);

@@ -165,7 +165,7 @@ int render(t_data *data)
 {
 	if (data->win_ptr == NULL)
 		return (1);
-	render_background(&data->img, WHITE_PIXEL);
+	render_background(data->img, WHITE_PIXEL);
 	render_rect(&data->img, (t_rect){WINDOW_WIDTH - 100, WINDOW_HEIGHT - 100,
 									 100, 100, GREEN_PIXEL});
 	//render_rect(&data->img, (t_rect){0, 0, 100, 100, RED_PIXEL});

@@ -4,7 +4,7 @@
 
 #PF_OBJS	=	${PF_SRCS:.c=.o}
 
-SRCS	=	mlx.c
+SRCS	=	put_image.c
 
 OBJS	=	${SRCS:.c=.o}
 
@@ -20,19 +20,18 @@ AR		=	ar rc
 
 #MLX		 = mlx_linux/mlx_Linux
 
-CFLAGS	=	-Wall -Werror -Wextra #-fsanitize=leak -g
+CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 
-#INC		=	-Lft_printf -I . -lftprintf
+INC		=	-I/usr/include -Imlx_linux -O3 -I .
 
 %.o: %.c
 	@echo "\033[32mCompiling $< in fancy colors"
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-$(MLX):
-
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME):	$(OBJS) $(MLX) #$(PF_NAME)
-			$(CC) $(CFLAGS) $(OBJS) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+			@make -C libft
+			#@make -C mlx_linux
+			$(CC) $(CFLAGS) $(OBJS) -I . -I ./libft -L ./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
 #$(PF_NAME):	${PF_OBJS}
 #			${AR} $(PF_NAME) $(PF_OBJS)
