@@ -32,6 +32,10 @@ typedef struct s_img
 	int     bpp; // bits per pixel
 	int     line_len;
 	int     endian;
+	int 	x;
+	int 	y;
+	int 	width;
+	int 	height;
 }   t_img;
 
 typedef struct s_data
