@@ -23,7 +23,6 @@
 # define WINDOW_HEIGHT 300
 # define WINDOW_WIDTH 600
 # define MLX_ERROR 1
-# define BLACK_PIXEL 0x000000
 
 typedef struct s_img
 {
@@ -34,6 +33,7 @@ typedef struct s_img
 	int     endian;
 	int 	x;
 	int 	y;
+	int		a;
 	int 	width;
 	int 	height;
 }   t_img;
@@ -43,18 +43,12 @@ typedef struct s_data
 	void    *mlx_ptr;
 	void    *win_ptr;
 	int 	cur_img;
-	char 	*relative_path;
-	t_img   img;
+	int 	i;
+	char	*relative_path;
+	char	*relative_path2;
+	t_img	*img_list;
 }   t_data;
 
-typedef struct s_rect
-{
-	int x;
-	int y;
-	int width;
-	int height;
-	int color;
-}   t_rect;
 
 
 #endif
