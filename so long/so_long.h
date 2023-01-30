@@ -23,6 +23,10 @@
 # define WINDOW_HEIGHT 300
 # define WINDOW_WIDTH 600
 # define MLX_ERROR 1
+# define right	65363
+# define left	65361
+# define up		65362
+# define down	65364
 
 typedef struct s_img
 {
@@ -31,11 +35,7 @@ typedef struct s_img
 	int     bpp; // bits per pixel
 	int     line_len;
 	int     endian;
-	int 	x;
-	int 	y;
-	int		a;
-	int 	width;
-	int 	height;
+	t_cords	size;
 }   t_img;
 
 typedef struct s_data
@@ -43,11 +43,19 @@ typedef struct s_data
 	void    *mlx_ptr;
 	void    *win_ptr;
 	int 	cur_img;
-	int 	i;
-	char	*relative_path;
-	char	*relative_path2;
+	char	*img1;
+	char	*img2;
 	t_img	*img_list;
+	t_cords	size;
 }   t_data;
+
+typedef struct s_cords
+{
+	int		x;
+	int 	y;
+	int 	width;
+	int 	height;
+}	t_cords;
 
 
 
