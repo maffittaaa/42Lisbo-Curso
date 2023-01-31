@@ -40,7 +40,7 @@ all:		${NAME}
 
 clean:
 
-			@echo "\033[31mCleaning files in fancy colors"
+			@echo "Cleaning files in fancy colors"
 			@${RM} ${OBJS} #${PF_OBJS}
 
 fclean:		clean

@@ -43,7 +43,7 @@ typedef struct s_img
 	int 		width;
 	int 		height;
 	int     	endian;
-	t_coords	*position;
+	t_coords	position;
 }   t_img;
 
 typedef struct s_data
