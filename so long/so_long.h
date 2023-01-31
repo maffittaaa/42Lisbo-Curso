@@ -20,43 +20,39 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 
-# define WINDOW_HEIGHT 300
-# define WINDOW_WIDTH 600
-# define MLX_ERROR 1
-# define right	65363
-# define left	65361
-# define up		65362
-# define down	65364
+# define	WINDOW_HEIGHT 300
+# define	WINDOW_WIDTH 600
+# define	MLX_ERROR 1
+# define	right	65363
+# define	left	65361
+# define	up		65362
+# define	down	65364
+
+typedef struct s_coords
+{
+	int			x;
+	int 		y;
+}t_coords;
 
 typedef struct s_img
 {
-	void    *mlx_img;
-	char    *addr;
-	int     bpp; // bits per pixel
-	int     line_len;
-	int     endian;
-	t_cords	size;
+	void    	*mlx_img;
+	char    	*addr;
+	int     	bpp; // bits per pixel
+	int     	line_len;
+	int 		width;
+	int 		height;
+	int     	endian;
+	t_coords	*position;
 }   t_img;
 
 typedef struct s_data
 {
-	void    *mlx_ptr;
-	void    *win_ptr;
-	int 	cur_img;
-	char	*img1;
-	char	*img2;
-	t_img	*img_list;
-	t_cords	size;
+	void    	*mlx_ptr;
+	void    	*win_ptr;
+	int 		cur_img;
+	char		*img1;
+	t_img		*img_list;
 }   t_data;
-
-typedef struct s_cords
-{
-	int		x;
-	int 	y;
-	int 	width;
-	int 	height;
-}	t_cords;
-
-
 
 #endif
