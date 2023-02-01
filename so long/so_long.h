@@ -43,6 +43,7 @@ typedef struct s_img
 	int 		width;
 	int 		height;
 	int     	endian;
+	char		*img1;
 	t_coords	position;
 }   t_img;
 
@@ -51,7 +52,6 @@ typedef struct s_data
 	void    	*mlx_ptr;
 	void    	*win_ptr;
 	int 		cur_img;
-	char		*img1;
 	t_img		*img_list;
 }   t_data;
 
