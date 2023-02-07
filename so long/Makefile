@@ -18,21 +18,23 @@ RM		=	rm -f
 
 AR		=	ar rc
 
-#MLX		 = mlx_linux/mlx_Linux
+MLX		 = mlx_linux/libmlx_Linux.a
 
 CFLAGS	=	-Wall -Werror -Wextra -g -fsanitize=address
 
-INC		=	-I/usr/include -Imlx_linux -O3 -I .
+INC		=	-I/usr/include -O3 -I . -Imlx_linux
 
 %.o: %.c
 	@echo "\033[32mCompiling $< in fancy colors"
 	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 $(NAME):	$(OBJS) $(MLX) #$(PF_NAME)
-			@make -C libft
+			#@make -C libft
 			#@make -C mlx_linux
 			$(CC) $(CFLAGS) $(OBJS) -I . -I ./libft -L ./libft -lft -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
 
+$(MLX):
+		make -C mlx_linux
 #$(PF_NAME):	${PF_OBJS}
 #			${AR} $(PF_NAME) $(PF_OBJS)
 
