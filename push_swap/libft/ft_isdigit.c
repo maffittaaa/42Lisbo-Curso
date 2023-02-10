@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int a)
+int	ft_isdigit(int a) // verifica carater a carater
 {
 	if (a >= '0' && a <= '9')
 		return (1);
