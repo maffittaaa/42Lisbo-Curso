@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int					neg;
-	unsigned long int	result;
+	unsigned long		result;
 	size_t				index;
 
 	neg = 1;

@@ -2,6 +2,8 @@
 
 int error_checker()
 {
+    int i;
+
     i = 1;
     //enquanto nao chegar ao fim dos argumentos verificar se sao numeros ou duplicados
     while (i <= argc)
@@ -11,7 +13,7 @@ int error_checker()
             printf("Error\n");
             break;
         }
-        if (argv[i] > INT_MAX || argv[i] < INT_MIN)
+        if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
         {
             printf("Error\n");
             break;
@@ -36,7 +38,7 @@ int isNumber(char *number)
         i++;
     while(number[i] != 0)
     {
-        if (ft_isdigit(number[i] == 1))
+        if (ft_isdigit(number[i]) == 1)
             i++;
         else
             return (0);
