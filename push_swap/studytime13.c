@@ -35,7 +35,7 @@ int     main()
         "       6 to end.\n");
 
         printf(":: ");
-        printf("%d", &choice);
+        scanf("%d", &choice);
 
         //loop while user does not choose 3
         while (choice != 6)
@@ -44,21 +44,21 @@ int     main()
             {
                 case 1:
                     printf("ENTER A CHARACTER: ");
-                    printf("\n%c", &item);
+                    scanf("\n%c", &item);
                     insert(&head, item); // insert item in list
                     printList (head);
                     break;
                 
                 case 2:
                     printf("ENTER A CHARACTER: ");
-                    printf("\n%c", &item);
+                    scanf("\n%c", &item);
                     insertAtEnd(&head, item); // insert item in list
                     printList (head);
                     break;
 
                 case 3:
                     printf("ENTER A CHARACTER: ");
-                    printf("\n%c", &item);
+                    scanf("\n%c", &item);
                     insertAtBeginning(&head, item); // insert item in list
                     printList (head);
                     break;
@@ -69,7 +69,7 @@ int     main()
                     if (!isEmpty(head))
                     {
                         printf("ENTER CHARACTER TO BE DELETED: ");
-                        printf("\n%c", &item);
+                        scanf("\n%c", &item);
                         //if character is found, remove it
                         if (delete(&head, item))
                         {
@@ -108,10 +108,10 @@ int     main()
                     break;
             }
             printf("?");
-            printf("%d", &choice);
+            scanf("%d", &choice);
         }
-        printf("END OF RUN.\n");
-        return (0); //indicates successful termination
+    printf("END OF RUN.\n");
+    return (0); //indicates successful termination
 }
 
 void    insertAtBeginning(ListNodePtr *head, char value)
@@ -144,5 +144,130 @@ void    insertAtEnd(ListNodePtr *head, char value)
         current->nextPtr = NULL;
         *head = current; // because there is nothing else in the list or already at the end, set the head to the current, so then we're resseting the head
     }
+}
+
+//insert a new value into the list in sorted order
+void insert(ListNodePtr *head, char value)
+{
+	ListNodePtr newPtr; // pointer to the new node
+	ListNodePtr previousPtr; // pointer to the previous node in the list
+	ListNodePtr currentPtr; // pointer to the current node in the list
+
+	newPtr = malloc(sizeof(node_t)); // create node
+
+	if (newPtr != NULL) // if the space is available
+	{
+		newPtr->data = value; // place value in node
+		newPtr->nextPtr = NULL; // node does not link to another node
+
+	previousPtr = NULL;
+	currentPtr = *head;
+
+		// loop to find the correct location in the list
+		while (currentPtr != NULL && value > currentPtr->data) // checking current pointer and while its not null and the value to be inserted is greater than the current current pointer.data
+		{
+			// its traversing the list to figure out where we need to put the pointer
+			previousPtr = currentPtr; //walk to...
+			currentPtr = currentPtr->nextPtr; // ...next node
+		}
+
+		//insert new node at the beginning of the list
+		if ( previousPtr == NULL)
+		{
+			newPtr->nextPtr = *head; //sort the new node as the first node in the list
+			*head = newPtr;
+		}
+		else // insert the new node between previousPtr and currentPtr
+		{
+			previousPtr->nextPtr = newPtr;
+			newPtr->nextPtr = currentPtr;
+		}
+	}
+	else
+	{
+		printf("%c not inserted. No memory available.\n", value);
+	}
+}
+
+void	deleteAtBeginning(ListNodePtr *head)
+{
+	ListNodePtr tempPtr = NULL; // temporary node pointer
+
+	if(head == NULL) // check if the list has anything in it
+		return ; // that means we dont have anything in the list
+	else
+	{
+		tempPtr = *head; // hold onto the node being removed
+		*head = (*head) ->nextPtr; // de-thread the node
+		free (tempPtr); // free the de-threaded node
+	}
+}
+
+// delete a list element
+char	delete(ListNodePtr *head, char value)
+{
+	ListNodePtr previousPtr; //pointer to the previous node in the list
+	ListNodePtr currentPtr; //pointer to current node in the list
+	ListNodePtr tempPtr; // temporary node pointer
+
+	//delete the first node
+	if (value == (*head)->data) // check the first element in the list matches the character in the first node of the list
+	{
+		tempPtr = *head; //hold onto node being removed
+		*head = (*head)->nextPtr; // de-thread the node
+		free(tempPtr); // free the de-threaded node
+		//tempPtr will be used to free the underneath memory
+		return (value); // return the character that was deleted from the list
+	}
+	else
+	{
+		previousPtr = *head;
+		currentPtr = (*head)->nextPtr;
+
+		//loop to find the correct location in the list
+		while (currentPtr != NULL && currentPtr->data != value) // until we get to the end of the list and until we actually found the value
+		{
+			
+			previousPtr = currentPtr; // walk to...
+			currentPtr = currentPtr->nextPtr; // ... next node  // this locates the character to be deleted if it's contained in the list
+		}
+
+		//delete node at currentPtr
+		if (currentPtr != NULL) // if this happens, we found something
+		{
+			tempPtr = currentPtr;
+			previousPtr->nextPtr = currentPtr->nextPtr;
+			free (tempPtr);
+			return (value); // return the character that was deleted from the list
+		}
+	}
+	return ('\0'); // if its equal to null, return the null character because we didn't find it and we got to the end list
+}
+
+// print the list
+void	printList(ListNodePtr currentPtr)
+{
+	//if the list is empty
+	if (currentPtr == NULL)
+		printf("List is empty.\n\n");
+	else
+	{
+		printf("The list is:\n");
+
+		//while not the end of the list
+		while (currentPtr != NULL)
+		{
+			printf("%c --> ", currentPtr->data);
+			currentPtr = currentPtr->nextPtr; // incrementing the pointer to go to the next pointer to check if it's null to see if we're at the end
+		}
+
+		printf("NULL\n\n"); // if the link is at the last node of the list and the list is not null
+	}
+}
+
+//return 1 if the list is empty, 0 otherwise
+int	isEmpty(ListNodePtr head)
+{
+	return head == NULL; // if the head of the list is not null, there's something in the list; if the nead of the list is null that means the list is empty
 }
 
