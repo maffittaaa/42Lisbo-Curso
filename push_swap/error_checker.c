@@ -1,10 +1,14 @@
 #include "push_swap.h"
 
-int error_checker()
+int error_checker(int argc, char **argv)
 {
-    int i;
+    int     i;
+    long    INT_MAX;
+    long    INT_MIN;
 
     i = 1;
+    INT_MAX = 2147483647;
+    INT_MIN = -2147483648;
     //enquanto nao chegar ao fim dos argumentos verificar se sao numeros ou duplicados
     while (i <= argc)
     {
