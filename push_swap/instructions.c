@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include "push_swap.h"
 //#include "libft.h"
 
 struct node
@@ -29,18 +30,13 @@ void ft_swap(int *a, int *b)
 
 struct node *last = NULL; // pointer para o ultimo node na lista
 
-void    swap_a(int data)
+int   swap_a(t_n *head)
 {
-    struct node *temp; // novo node
-    temp = (struct node*)malloc(sizeof(struct node)); //tamanho do node
-
-    if (ft_swap(temp, last) < 0)
-    {
-        printf("sa\n", 1);
-    }
-    else
-        data++;
-    data++;
+    printf("sa\n");
+    t_n temp;
+    temp = *head;
+    head->nextInLine = head->nextInLine->nextInLine;
+    temp.nextInLine->nextInLine = head;
 }
 
 int main()

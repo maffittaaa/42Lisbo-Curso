@@ -2,6 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+//linear linked list
+
 struct sPerson
 {
     int age;
