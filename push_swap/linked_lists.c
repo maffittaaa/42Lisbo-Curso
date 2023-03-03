@@ -5,6 +5,7 @@
 struct sPerson
 {
     int age;
+    struct sPerson *nextInLIne; // pointer to make the link between the two data structures
 };
 
 //function to make a new sPerson
@@ -16,6 +17,8 @@ struct sPerson *getNewPerson(const int age)
     //malloc returns a pointer to the beginning of the allocated memory
     // we point the newPerson pointer to that allocated returned pointer
     newPerson = malloc(sizeof(struct sPerson));
+    //assign nextInLine to NULL (as in not pointing to anything)
+    newPerson->nextInLIne = NULL;
     //assigned the age value
     newPerson->age = age;
     //we can print the memory address of where our pointer is pointing
@@ -31,7 +34,7 @@ void printPerson(const struct sPerson *person, const char *comment)
     if (person == NULL)
         printf("%s is NULL\n", comment);
     else
-        printf("%s: age:%d address:%p\n", comment, person->age, person);
+        printf("%s: age:%d address:%p nextInLine:%p\n", comment, person->age, person, person->nextInLIne);
 }
 
 int main()
@@ -48,6 +51,11 @@ int main()
     second = getNewPerson(100);
 
     printPerson(first, "first");
+    printPerson(second, "second");
+
+    first->nextInLIne = second;// make the link between the first and the second structure
+    printPerson(first, "first");
+    printPerson(first->nextInLIne, "first->nextInLine");
     printPerson(second, "second");
 
     free (first);

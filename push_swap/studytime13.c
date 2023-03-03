@@ -270,4 +270,3 @@ int	isEmpty(ListNodePtr head)
 {
 	return head == NULL; // if the head of the list is not null, there's something in the list; if the nead of the list is null that means the list is empty
 }
-
