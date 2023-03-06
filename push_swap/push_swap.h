@@ -5,7 +5,7 @@
 
 typedef struct s_node
 {
-    int ref;
-    struct node *nextInLine;
-} t_node;
-
+    t_node *prevInLine;
+    int data;
+    t_node *nextInLine;
+}   t_node;
