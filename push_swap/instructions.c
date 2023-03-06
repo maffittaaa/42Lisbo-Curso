@@ -1,63 +1,60 @@
+//#include "push_swap.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "push_swap.h"
-//#include "libft.h"
+#include "libft.h"
 
-struct node
+typedef struct s_node
 {
-    int ref;
-    struct node *nextInLine;
-};
+    t_node *prevInLine;
+    int data;
+    t_node *nextInLine;
+}   t_node;
 
-int	ft_strcmp(const char *str1, const char *str2)
+int   swap_a(t_node *head)
 {
-	size_t	i;
+    // 0 1 2
 
-	i = 0;
-	while (str1[i] != '\0' && str2[i] != '\0')
-		return ((unsigned char)str1[i] - (unsigned char)str2[i]);
-}
-
-void ft_swap(int *a, int *b)
-{
-	int temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
-}
-
-struct node *last = NULL; // pointer para o ultimo node na lista
-
-int   swap_a(t_n *head)
-{
     printf("sa\n");
-    t_n temp;
-    temp = *head;
-    head->nextInLine = head->nextInLine->nextInLine;
-    temp.nextInLine->nextInLine = head;
+    t_node  *last;
+    t_node  *sec;
+   
+   last = head->prevInLine;
+   sec = head->nextInLine;
+
+    sec->prevInLine = last; // 2 = 0
+    sec->nextInLine->prevInLine = head; // 1 = 2
+    head->nextInLine = sec->nextInLine; // 0 = 2
+    sec->nextInLine = head; // 1 = 0
+    head = sec;
+    // output =  1 0 2
 }
 
-int main()
+int rotate_a(t_node *head)
 {
-    swap_a(10);
-    swap_a(20);
+    // 0 1 2
 
-    return (0);
+    printf("ra\n");
+    t_node  *sec;
+   
+    sec = head->nextInLine;
+
+    head = sec;// the first element becomes the last one // 0 = 1
+
+    // output 1 2 0
+}
+
+int reverse_rotate_a(t_node *head)
+{
+    // 0 1 2
+
+    printf("rra\n");
+    t_node  *last;
+    last = head->prevInLine;
+
+    head = last; // the last element becomes the first one // 2 = 0
+
+    // output 2 0 1
 }
 
 
-
-//    if (last == NULL) // se o novo node for o unico na lista
-//    {
-//        temp->ref = data;
-//        temp->nextInLine = temp;
-//        last = temp;
-//    }
-//    else //se o ultimo node tiver a referencia do novo node e o novo node tiver a referencia do anterior primeiro node
-//    {
-//        temp->ref = data;
-//        temp->nextInLine = last->nextInLine;
-//        last ->nextInLine = temp; // ultimo node tem a referencia do novo node temp
-//    }
