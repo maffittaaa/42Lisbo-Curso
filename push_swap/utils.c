@@ -24,17 +24,23 @@ long	ft_atoi(const char *str)
 	return (result * neg);
 }
 
-int	ft_strcmp(const char *str1, const char *str2)
+int length(t_node *head)
 {
-	size_t	i;
+	int i;
+	t_node *temp;
 
-	i = 0;
-	while (str1[i] != '\0' && str2[i] != '\0')
-		return ((unsigned char)str1[i] - (unsigned char)str2[i]);
-}
-
-int swap()
-{
-	struct node *head;
-	
+	i = 1;
+	if (head == NULL)
+		return ;
+	while (head != NULL)
+	{
+		if (temp->nextInLine != head)
+		{
+			temp = temp->nextInLine;
+			i++;
+		}
+		else
+			i = 1;
+	}
+	return (i);
 }
