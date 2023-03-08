@@ -31,16 +31,26 @@ int length(t_node *head)
 
 	i = 1;
 	if (head == NULL)
-		return ;
-	while (head != NULL)
+		return (0);
+	temp = head;
+	while (temp->nextInLine != head)
 	{
-		if (temp->nextInLine != head)
-		{
-			temp = temp->nextInLine;
-			i++;
-		}
-		else
-			i = 1;
+		temp = temp->nextInLine;
+		i++;
 	}
 	return (i);
+}
+
+int create_stack(t_node *head_a, int argc, char **argv)
+{
+	int i;
+	t_node *temp;
+	
+	i = 1;
+	temp = 0;
+	while (i < argc)
+	{
+		
+	}
+
 }

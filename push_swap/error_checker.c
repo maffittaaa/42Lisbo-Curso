@@ -10,7 +10,7 @@ int error_checker(int argc, char **argv)
     INT_MAX = 2147483647;
     INT_MIN = -2147483648;
     //enquanto nao chegar ao fim dos argumentos verificar se sao numeros ou duplicados
-    while (i <= argc)
+    while (i < argc)
     {
         if (isNumber(argv[i] == 0))
         {
