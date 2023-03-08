@@ -41,16 +41,18 @@ int length(t_node *head)
 	return (i);
 }
 
-int create_stack(t_node *head_a, int argc, char **argv)
+void lstnew(t_node *head)
 {
-	int i;
-	t_node *temp;
-	
-	i = 1;
-	temp = 0;
-	while (i < argc)
-	{
-		
-	}
+	t_node *node;
 
+	node = (t_node *)malloc(sizeof(t_node));
+	
+	if (!node)
+		return NULL;
+	while (node->nextInLine != head)
+	{
+		node->prevInLine = head->prevInLine;
+		node->prevInLine->nextInLine = node;
+		head->prevInLine = node;
+	}
 }
