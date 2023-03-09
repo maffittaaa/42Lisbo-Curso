@@ -10,7 +10,6 @@
 typedef struct s_stack
 {
     t_node *node;
-    t_stack *top;
     int     size;
 }t_stack;
 
