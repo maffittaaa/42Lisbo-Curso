@@ -6,11 +6,20 @@
 #include <stdlib.h>
 #include "libft.h"
 
+
+typedef struct s_stack
+{
+    t_node *node;
+    t_stack *top;
+    int     size;
+}t_stack;
+
 typedef struct s_node
 {
     t_node *prevInLine;
     int     content;
     t_node *nextInLine;
+    t_stack *stack;
 }   t_node;
 
 int   swap_a(t_node *head_a);

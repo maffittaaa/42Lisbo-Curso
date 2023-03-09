@@ -40,21 +40,3 @@ int length(t_node *head)
 	}
 	return (i);
 }
-
-
-void new_node(t_node *head, int number)
-{
- 	t_node *node;
-
- 	node = (t_node *)malloc(sizeof(t_node)); //alocar o tamanho do node
-	
- 	if (!node)
- 		return NULL;
- 	while (node->nextInLine != head)
- 	{
- 		node->content = number; // conteudo do node vai ser um numero
- 		node->prevInLine = head->prevInLine;
- 		node->prevInLine->nextInLine = node;
- 		head->prevInLine = node;
- 	}
-}
