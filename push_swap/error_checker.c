@@ -10,25 +10,23 @@ int error_checker(int argc, char **argv)
     INT_MAX = 2147483647;
     INT_MIN = -2147483648;
     //enquanto nao chegar ao fim dos argumentos verificar se sao numeros ou duplicados
+    if (isDuplicate(argc, argv) == 1)
+        printf("Error - Duplicate numbers\n");
     while (i < argc)
     {
-        if (isNumber(argv[i] == 0))
+        if (isNumber(argv[i]) == 0)
         {
             printf("Error\n");
-            break;
+            return (1);
         }
         if (ft_atoi(argv[i]) > INT_MAX || ft_atoi(argv[i]) < INT_MIN)
         {
             printf("Error\n");
-            break;
-        }
-        if (isDuplicate(argv[i] == 1))
-        {
-            printf("Error\n");
-            break;
+             return (1);
         }
         i++;
     }
+    return (0);
 }
 
 //verificar se o argumento que esta a ser passado e um numero
@@ -62,7 +60,7 @@ int isDuplicate(int argc, char **argv)
         j = i + 1;
         while (j < argc)
         {
-            if (ft_strcmp(argv[i], argv[j]))
+            if (!ft_strcmp(argv[i], argv[j]))
                 return (1);
             j++;
         }

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int stack_swap(t_node *head)
+void stack_swap(t_node *head)
 {
 	t_node  *last;
     t_node  *sec;
@@ -18,7 +18,7 @@ int stack_swap(t_node *head)
     head = sec;
 }
 
-int stack_rotate(t_node *head)
+void stack_rotate(t_node *head)
 {
 	t_node  *sec;
    
@@ -27,7 +27,7 @@ int stack_rotate(t_node *head)
     head = sec;
 }
 
-int stack_reverse_rotate(t_node *head)
+void stack_reverse_rotate(t_node *head)
 {
 	t_node *last;
 
