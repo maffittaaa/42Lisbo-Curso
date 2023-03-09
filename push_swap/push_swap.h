@@ -9,7 +9,7 @@
 typedef struct s_node
 {
     t_node *prevInLine;
-    int     data;
+    int     content;
     t_node *nextInLine;
 }   t_node;
 
