@@ -8,7 +8,7 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 
 CC = 			cc
 
-CFLAGS = 		-Wall -Werror -Wextra -I libft -L ./libft -lft
+CFLAGS = 		-Wall -Werror -Wextra 
 
 RM = 			rm -f
 
@@ -19,13 +19,13 @@ NAME =			push_swap
 AR =			ar rc
 
 .c.o:
-				${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+				${CC} ${CFLAGS}  -I. -L. -I ./libft -L ./libft -lft -c $< -o ${<:.c=.o}
 
 $(NAME):		${CTOO} libft/libft.a
-				${CC} $(CFLAGS) -o ${NAME} ${CTOO}
+				${CC} $(CFLAGS) ${CTOO} -I. -L. -I ./libft -L ./libft -lft -o ${NAME}
 
 libft/libft.a:
-			make -C libft
+				make -C libft
 	
 all:			${NAME}
 

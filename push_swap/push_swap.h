@@ -35,6 +35,7 @@ void     lstnew(t_node *head, int number);
 
 long	ft_atol(const char *str);
 int     length(t_node *head);
+int	    ft_strcmp(char *s1, char *s2);
 
 int     error_checker(int argc, char **argv);
 int     isNumber(char *number);
