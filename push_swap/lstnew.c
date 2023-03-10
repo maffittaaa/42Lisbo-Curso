@@ -12,3 +12,4 @@ void   lstnew(t_node *head, int number)
    new_node->nextInLine = head;
    head->prevInLine = new_node;
 }
+

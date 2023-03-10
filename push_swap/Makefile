@@ -6,7 +6,7 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 				stack_instructions.c		utils.c \
 				utils_2.c
 
-CC = 			cc
+CC = 			gcc
 
 CFLAGS = 		-Wall -Werror -Wextra 
 

@@ -36,12 +36,11 @@ int isDuplicate(int argc, char **argv)
     int j;
 
     i = 0;
-    while (i < argc)
-    {
-        j = i + 1;
+    while (i < argc)            if (!(argv[i] == 0 || argv[i] == -0 || argv[j] == 0 || argv[j] == -0))
+                return (1);
         while (j < argc)
         {
-            if (!ft_strcmp(argv[i], argv[j]))
+            if (!ft_strcmp(argv[i],argv[j]))
                 return (1);
             j++;
         }

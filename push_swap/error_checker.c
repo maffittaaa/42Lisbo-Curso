@@ -17,13 +17,18 @@ int error_checker(int argc, char **argv)
     {
         if (isNumber(argv[i]) == 0)
         {
-            printf("Error\n");
+            printf("Error - Not a number\n");
             return (1);
         }
-        if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+        if (ft_atol(argv[i]) > INT_MAX)
         {
-            printf("Error\n");
-             return (1);
+            printf("Error - big number\n");
+            return (1);
+        }
+        if (ft_atol(argv[i]) < INT_MIN)
+        {
+            printf("Error - small number\n");
+            return (1);
         }
         i++;
     }
