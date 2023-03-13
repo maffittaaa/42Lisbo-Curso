@@ -6,16 +6,14 @@ int lstsize(t_node *head)
     int size;
 
     if (!head)
-        return (NULL);
+        return (0);
     
     temp = head->nextInLine;
     size = 0;
-    while (temp && temp != head && temp != temp->nextInLine)
+    while (temp && temp != head)
     {
         size++;
         temp = temp->nextInLine;
     }
-    if (temp)
-        size++;
     return (size);
 }
