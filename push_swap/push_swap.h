@@ -13,25 +13,26 @@ typedef struct s_node
     struct s_node *nextInLine;
 }   t_node;
 
-void     swap_a(t_node *head_a);
-void     rotate_a(t_node *head_a);
-void     reverse_rotate_a(t_node *head_a);
-void     push_a(t_node *head_a, t_node *head_b);
+void    swap_a(t_node *head_a);
+void    rotate_a(t_node *head_a);
+void    reverse_rotate_a(t_node *head_a);
+void    push_a(t_node *head_a, t_node *head_b);
 
-void     swap_b(t_node *head_b);
-void     rotate_b(t_node *head_b);
-void     reverse_rotate_b(t_node *head_b);
-void     push_b(t_node *head_a, t_node *head_b);
+void    swap_b(t_node *head_b);
+void    rotate_b(t_node *head_b);
+void    reverse_rotate_b(t_node *head_b);
+void    push_b(t_node *head_a, t_node *head_b);
 
-void     both_swaps(t_node *head);
-void     both_rotates(t_node *head);
-void     both_reverse_rotates(t_node *head);
+void    both_swaps(t_node *head);
+void    both_rotates(t_node *head);
+void    both_reverse_rotates(t_node *head);
 
-void     stack_swap(t_node *head);
-void     stack_rotate(t_node *head);
-void     stack_reverse_rotate(t_node *head);
+void    stack_swap(t_node *head);
+void    stack_rotate(t_node *head);
+void    stack_reverse_rotate(t_node *head);
 
-void     lstnew(t_node *head, int number);
+void    lstnew(t_node *head, int number);
+int     lstsize(t_node *head)
 
 long	ft_atol(const char *str);
 int     length(t_node *head);
