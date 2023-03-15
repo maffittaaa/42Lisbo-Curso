@@ -32,7 +32,8 @@ void    stack_rotate(t_node *head);
 void    stack_reverse_rotate(t_node *head);
 
 void    lstnew(t_node *head, int number);
-int     lstsize(t_node *head)
+int     lstsize(t_node *head);
+void    lstiter(t_node *head, void (*f)(void *));
 
 long	ft_atol(const char *str);
 int     length(t_node *head);

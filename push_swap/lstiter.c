@@ -12,7 +12,7 @@ void    lstiter(t_node *head, void (*f)(void *))
     }
     while (last != NULL)
     {
-        f(last->content)
+        f(last->content);
         last = last->prevInLine;
     }
 }

@@ -2,9 +2,11 @@
 
 FUNCTIONS =		error_checker.c				instructions_a.c \
 				instructions_b.c			instructions_both.c \
-				lstnew.c					push_swap.c \
+				lstnew.c					lstsize.c \
+				lstiter.c					push_swap.c \
 				stack_instructions.c		utils.c \
-				utils_2.c					lstsize.c \
+				utils_2.c					
+
 
 CC = 			gcc
 
