@@ -55,10 +55,8 @@ int isDuplicate(int argc, char **argv)
 
 int find_max(t_node *last, int value)
 {
-    t_node *temp;
     int     max;
 
-    temp = last;
     max = last->index;
     while (last->prevInLine)
     {
@@ -66,4 +64,18 @@ int find_max(t_node *last, int value)
             max = last->index;
     }
     return (max);
+}
+
+int find_min(t_node *head, int value)
+{
+    int min;
+
+    min = head->index;
+    while (head->nextInLine)
+    {
+        head = head->nextInLine;
+        if ((head->index < min) && head->index != value)
+            min = head->index;
+    }
+    return (min);
 }

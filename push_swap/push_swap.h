@@ -44,5 +44,6 @@ int     error_checker(int argc, char **argv);
 int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
 int     find_max(t_node *last, int value);
+int     find_min(t_node *head, int value);
 
 #endif

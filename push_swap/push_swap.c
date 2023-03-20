@@ -34,6 +34,8 @@ void    five_numbers(t_node *head_a, t_node *head_b)
     t_node *sec_a;
     int max;
     int max_prev;
+    int min;
+    int min_next;
 
     last_b = head_b->prevInLine;
     sec_b = head_b->nextInLine;
@@ -41,6 +43,8 @@ void    five_numbers(t_node *head_a, t_node *head_b)
     sec_a = head_a->nextInLine;
     max = find_max(head_a, max);
     max_prev = find_max(head_a, max_prev);
+    min = find_min(head_a, min);
+    min_next = find_min(head_a, min_next);
 
     while (length(head_a) >= 4)
         push_b(head_a, head_b);
@@ -50,7 +54,7 @@ void    five_numbers(t_node *head_a, t_node *head_b)
         if (length(head_b) == 2)
         {
             push_a(head_b, head_a);
-            if (last_a->index == max && head_a->index == max_prev)
+            if (last_a->index == max && head_a == max_prev)
             {
                 reverse_rotate_a(head_a);
                 push_b(head_a, head_b);
@@ -64,7 +68,14 @@ void    five_numbers(t_node *head_a, t_node *head_b)
                 rotate_a;
         }
         if (length(head_b) == 1)
-            push_a(head_b, head_a);
+        {
+            if (head_a->index == min)
+                push_a(head_b, head_a);
+            if (head_a > sec_a && head_a < sec_a->nextInLine)
+                swap_a(head_a);
+            
+            
+
     }       
 }
 
