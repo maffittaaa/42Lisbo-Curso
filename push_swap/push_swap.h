@@ -9,6 +9,7 @@
 typedef struct s_node
 {
     int     content;
+    int     index;
     struct s_node *prevInLine;
     struct s_node *nextInLine;
 }   t_node;
@@ -42,5 +43,6 @@ int	    ft_strcmp(char *s1, char *s2);
 int     error_checker(int argc, char **argv);
 int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
+int     find_max(t_node *last, int value);
 
 #endif
