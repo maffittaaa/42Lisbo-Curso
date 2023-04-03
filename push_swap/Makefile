@@ -1,5 +1,4 @@
 
-
 FUNCTIONS =		error_checker.c				instructions_a.c \
 				instructions_b.c			instructions_both.c \
 				lstnew.c					lstsize.c \

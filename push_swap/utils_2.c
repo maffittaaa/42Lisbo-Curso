@@ -41,11 +41,8 @@ int isDuplicate(int argc, char **argv)
         j = i + 1;
         while (j < argc)
         {
-            while (ft_atol(argv[i]) && ft_atol(argv[j]))
-            {
-                if (!ft_strcmp(argv[i],argv[j]))
-                    return (1);
-            }
+            if (!ft_strcmp(argv[i],argv[j]))
+                return (1);
             j++;
         }
         i++;
@@ -53,29 +50,15 @@ int isDuplicate(int argc, char **argv)
     return (0);
 }
 
-int find_max(t_node *last, int value)
+int find_max(t_node **last)
 {
     int     max;
 
-    max = last->index;
-    while (last->prevInLine)
+    max = (*last)->index;
+    while ((*last)->prevInLine)
     {
-        if (last->index > max && last->index != value)
-            max = last->index;
+        if ((*last)->index > max)
+            max = (*last)->index;
     }
     return (max);
-}
-
-int find_min(t_node *head, int value)
-{
-    int min;
-
-    min = head->index;
-    while (head->nextInLine)
-    {
-        head = head->nextInLine;
-        if ((head->index < min) && head->index != value)
-            min = head->index;
-    }
-    return (min);
 }

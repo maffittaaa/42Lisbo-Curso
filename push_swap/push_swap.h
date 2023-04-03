@@ -14,36 +14,39 @@ typedef struct s_node
     struct s_node *nextInLine;
 }   t_node;
 
-void    swap_a(t_node *head_a);
-void    rotate_a(t_node *head_a);
-void    reverse_rotate_a(t_node *head_a);
-void    push_a(t_node *head_a, t_node *head_b);
+void    swap_a(t_node **head_a);
+void    rotate_a(t_node **head_a);
+void    reverse_rotate_a(t_node **head_a);
+void    push_a(t_node **head_a, t_node **head_b);
 
-void    swap_b(t_node *head_b);
-void    rotate_b(t_node *head_b);
-void    reverse_rotate_b(t_node *head_b);
-void    push_b(t_node *head_a, t_node *head_b);
+void    swap_b(t_node **head_b);
+void    rotate_b(t_node **head_b);
+void    reverse_rotate_b(t_node **head_b);
+void    push_b(t_node **head_a, t_node **head_b);
 
-void    both_swaps(t_node *head);
-void    both_rotates(t_node *head);
-void    both_reverse_rotates(t_node *head);
+void    both_swaps(t_node **head);
+void    both_rotates(t_node **head);
+void    both_reverse_rotates(t_node **head);
 
-void    stack_swap(t_node *head);
-void    stack_rotate(t_node *head);
-void    stack_reverse_rotate(t_node *head);
+void    stack_swap(t_node **head);
+void    stack_rotate(t_node **head);
+void    stack_reverse_rotate(t_node **head);
 
-void    lstnew(t_node *head, int number);
-int     lstsize(t_node *head);
-void    lstiter(t_node *head, void (*f)(void *));
+void    three_numbers(t_node **head);
+void    five_numbers(t_node **head_a, t_node **head_b);
+
+void    lstnew(t_node **head, int number);
+int     lstsize(t_node **head);
+void    lstiter(t_node **head, void (*f)(void *));
 
 long	ft_atol(const char *str);
-int     length(t_node *head);
+int     length(t_node **head);
 int	    ft_strcmp(char *s1, char *s2);
 
 int     error_checker(int argc, char **argv);
 int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
-int     find_max(t_node *last, int value);
-int     find_min(t_node *head, int value);
+int     find_max(t_node **last);
+
 
 #endif
