@@ -10,8 +10,9 @@ typedef struct s_node
 {
     int     content;
     int     index;
-    struct s_node *prevInLine;
-    struct s_node *nextInLine;
+    struct  s_node  *top;
+    struct  s_node *prevInLine;
+    struct  s_node *nextInLine;
 }   t_node;
 
 void    swap_a(t_node **head_a);
@@ -34,6 +35,7 @@ void    stack_reverse_rotate(t_node **head);
 
 void    three_numbers(t_node **head);
 void    five_numbers(t_node **head_a, t_node **head_b);
+void    hundred_numbers(t_node **head_a, t_node **head_b);
 
 void    lstnew(t_node **head, int number);
 int     lstsize(t_node **head);
@@ -47,6 +49,9 @@ int     error_checker(int argc, char **argv);
 int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
 int     find_max(t_node **last);
+int     find_min(t_node **head);
+int    scan_stack_from_bottom(t_node **head, int *chunk, int chunk_size);
+int    scan_stack_from_top(t_node **head, int *chunk, int chunk_size);
 
 
 #endif

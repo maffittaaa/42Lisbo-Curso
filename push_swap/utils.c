@@ -24,16 +24,16 @@ long	ft_atol(const char *str)
 	return (result * neg);
 }
 
-int length(t_node *head)
+int length(t_node **head)
 {
 	int i;
 	t_node *temp;
 
 	i = 1;
-	if (head == NULL)
+	if (*head == NULL)
 		return (0);
-	temp = head;
-	while (temp->nextInLine != head)
+	temp = *head;
+	while (temp->nextInLine != *head)
 	{
 		temp = temp->nextInLine;
 		i++;

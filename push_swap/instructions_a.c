@@ -3,19 +3,19 @@
 void   swap_a(t_node **head_a)
 {
     printf("sa\n");
-    stack_swap(*head_a);
+    stack_swap(head_a);
 }
 
 void rotate_a(t_node **head_a)
 {
     printf("ra\n");
-    stack_rotate(*head_a);
+    stack_rotate(head_a);
 }
 
 void reverse_rotate_a(t_node **head_a)
 {
     printf("rra\n");
-    stack_reverse_rotate(*head_a);
+    stack_reverse_rotate(head_a);
 }
 
 void push_a(t_node **head_a, t_node **head_b)
@@ -26,17 +26,17 @@ void push_a(t_node **head_a, t_node **head_b)
     t_node *sec_b;
     t_node *last_a;
 
-    if (head_b == NULL)
+    if (*head_b == NULL)
         return ;
     last_b = (*head_b)->prevInLine;
     sec_b = (*head_b)->nextInLine;
     last_a = (*head_a)->prevInLine;
 
-    (*head_a)->prevInLine = head_b;
-    last_a->nextInLine = head_b;
+    (*head_a)->prevInLine = *head_b;
+    last_a->nextInLine = *head_b;
     (*head_b)->prevInLine = last_a;
-    (*head_b)->nextInLine = head_a;
-    if (length((*head_b)) > 1) // funcao que calcule a length do stack
+    (*head_b)->nextInLine = *head_a;
+    if (length(head_b) > 1) // funcao que calcule a length do stack
     {
         *head_b = sec_b;
         last_b->nextInLine = sec_b;

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void   lstnew(t_node *head, int number)
+void   lstnew(t_node **head, int number)
 {
    t_node *new_node;
 
@@ -8,8 +8,8 @@ void   lstnew(t_node *head, int number)
    if (!new_node)
       return ;
    new_node->content = number;
-   new_node->prevInLine = head->prevInLine;
-   new_node->nextInLine = head;
-   head->prevInLine = new_node;
+   new_node->prevInLine = (*head)->prevInLine;
+   new_node->nextInLine = *head;
+   (*head)->prevInLine = new_node;
 }
 

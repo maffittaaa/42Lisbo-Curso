@@ -1,16 +1,16 @@
 #include "push_swap.h"
 
-int lstsize(t_node *head)
+int lstsize(t_node **head)
 {
     t_node *temp;
     int size;
 
-    if (!head)
+    if (!*head)
         return (0);
     
-    temp = head->nextInLine;
+    temp = (*head)->nextInLine;
     size = 0;
-    while (temp && temp != head)
+    while (temp && temp != *head)
     {
         size++;
         temp = temp->nextInLine;
