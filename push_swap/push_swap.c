@@ -55,22 +55,26 @@ void    five_numbers(t_node **head_a, t_node **head_b)
         rotate_a(head_a);
 }
 
-void    hundred_numbers(t_node **head_a, t_node **head_b)
+void    hundred_numbers(t_node **head, int *chunk)
 {
-    int     *chunk1;
-    int     chunk_size;
-    int     temp1;
-    int     temp2;
+    int i;
+    int j;
+    int len;
+    int current_pos;
 
-    chunk_size = 19;
-    temp1 = scan_stack_from_top(head_a, chunk1, chunk_size);
-    temp2 = scan_stack_from_bottom(head_a, chunk1, chunk_size);
-    while ((*head_a)->nextInLine != *head_a)
+    i = 1;
+    len = length(head);
+    while (i < len)
     {
-        if (temp1 < temp2)
-        
+        current_pos = chunk[i];
+        j = i - 1;
+        while (j >= 0 && chunk[j] > current_pos)
+        {
+            chunk[j + 1] = chunk[j];
+            j = j - 1;
+        }
+        chunk[j + 1] = current_pos;
     }
-
 }
 
 
@@ -81,6 +85,9 @@ void    hundred_numbers(t_node **head_a, t_node **head_b)
 
 int main(int argc, char **argv)
 {
+    int chunk[] = { 2, 6, 8, 1, 5 };
+
     error_checker(argc,argv);
+    hundred_numbers(argv, chunk);
     return 0;
 }
