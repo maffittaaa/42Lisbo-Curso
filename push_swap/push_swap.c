@@ -55,10 +55,10 @@ void    five_numbers(t_node **head_a, t_node **head_b)
         rotate_a(head_a);
 }
 
-void    hundred_numbers(t_node **head_a, t_node **head_b)
-{
+// void    hundred_numbers(t_node **head_a, t_node **head_b)
+// {
 
-}
+// }
 
 
 
@@ -68,8 +68,6 @@ void    hundred_numbers(t_node **head_a, t_node **head_b)
 
 int main(int argc, char **argv)
 {
-    int chunk[] = { 2, 6, 8, 1, 5 };
-
     error_checker(argc,argv);
     return 0;
 }

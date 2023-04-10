@@ -1,18 +1,23 @@
 #include "push_swap.h"
 
-void    lstiter(t_node *head, void (*f)(void *))
+void    lstiter(t_node **head, void (*f)(void *))
 {
-    t_node *last;
+    t_node *temp;
+    t_node *temp2;
 
-    while (head != NULL)
+    if (!*head)
+        return ;
+    temp = (*head)->nextInLine;
+    while (temp != *head)
     {
-        f(last->content);
-        last = head;
-        head = head->nextInLine;
+        temp2 = temp->nextInLine;
+        f(temp);
+        temp = temp2;
+        temp2 = 0;
     }
-    while (last != NULL)
+    while (*head)
     {
-        f(last->content);
-        last = last->prevInLine;
+        f(*head);
+        temp = temp->prevInLine;
     }
 }

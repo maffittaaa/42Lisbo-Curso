@@ -29,10 +29,10 @@ void    see_int(void *ptr)
 
 void    create_stack(t_node **head, int num)
 {
-    add_new_node(&head, num);
-    printf("The size of the stack is: %d\n", lstsize(&head));
-    remove_top_node(&head);
-    printf("The size of the stack is: %d\n", lstsize(&head));
+    add_new_node(head, num);
+    lstsize(head);
+    remove_top_node(head);
+    lstsize(head);
     lstiter(head, see_int);
     printf("/n");
 
