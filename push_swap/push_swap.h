@@ -50,8 +50,10 @@ int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
 int     find_max(t_node **last);
 int     find_min(t_node **head);
-int    scan_stack_from_bottom(t_node **head, int *chunk, int chunk_size);
-int    scan_stack_from_top(t_node **head, int *chunk, int chunk_size);
 
+int remove_top_node(t_node **head);
+void    add_new_node(t_node **head, int num);
+void    see_int(void *ptr);
+void    create_stack(t_node **head, int num);
 
 #endif
