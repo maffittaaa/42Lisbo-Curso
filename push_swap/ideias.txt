@@ -1,2 +1,4 @@
 argc - é um inteiro e possui o número de argumentos.
 argv - pointer para uma lista de strings. argv[0] e sempre o nome do programa
+
+como organizar um stack e que ferramentas usar.

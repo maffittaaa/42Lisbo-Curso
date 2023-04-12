@@ -4,8 +4,7 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 				lstnew.c					lstsize.c \
 				lstiter.c					push_swap.c \
 				stack_instructions.c		utils.c \
-				utils_2.c					creating_stack.c \	
-
+				utils_2.c					creating_stack.c	\
 
 CC = 			gcc
 
@@ -19,21 +18,25 @@ NAME =			push_swap
 
 AR =			ar rc
 
+LFT =			libft/libft.a
+
 .c.o:
 				${CC} ${CFLAGS}  -I. -L. -I ./libft -L ./libft -lft -c $< -o ${<:.c=.o}
 
-$(NAME):		${CTOO} libft/libft.a
+$(NAME):		${CTOO} ${LFT}
 				${CC} $(CFLAGS) ${CTOO} -I. -L. -I ./libft -L ./libft -lft -o ${NAME}
 
-libft/libft.a:
+${LFT}:
 				make -C libft
 	
 all:			${NAME}
 
 clean:
 				${RM} ${CTOO}
+				make -C libft clean
 
 fclean:			clean
 				${RM} ${NAME}
+				make -C libft fclean
 
 re:				fclean all

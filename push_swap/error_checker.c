@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int error_checker(int argc, char **argv)
+int error_checker(int argc, char **argv, t_node **head_a)
 {
     int     i;
     long    INT_MAX;
@@ -30,7 +30,11 @@ int error_checker(int argc, char **argv)
             printf("Error - small number\n");
             return (1);
         }
+
         i++;
     }
+    i = 0;
+    while (++i < argc)
+        lstnew(head_a, ft_atoi(argv[i]));
     return (0);
 }

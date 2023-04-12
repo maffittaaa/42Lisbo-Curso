@@ -9,8 +9,8 @@ int lstsize(t_node **head)
         return (0);
     
     temp = (*head)->nextInLine;
-    size = 0;
-    while (temp && temp != *head)
+    size = 1;
+    while (temp != *head)
     {
         size++;
         temp = temp->nextInLine;

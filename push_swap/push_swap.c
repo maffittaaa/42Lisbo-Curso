@@ -4,15 +4,12 @@ void    three_numbers(t_node **head)
 {
     if (length(head) <= 1)
         return ;
-    while (length(head) == 3)
-    {
-        if ((*head)->content > (*head)->nextInLine->content)
-            stack_swap(head);
-        if ((*head)->nextInLine->content < (*head)->content && (*head)->nextInLine->content < (*head)->prevInLine->content)
-            stack_rotate(head);
-        if ((*head)->content > (*head)->prevInLine->content)
-            stack_reverse_rotate(head);
-    }
+    if ((*head)->content > (*head)->nextInLine->content)
+        stack_swap(head);
+    if ((*head)->nextInLine->content < (*head)->content && (*head)->nextInLine->content < (*head)->prevInLine->content)
+        stack_rotate(head);
+    if ((*head)->content > (*head)->prevInLine->content)
+        stack_reverse_rotate(head);
 }
 
 void    five_numbers(t_node **head_a, t_node **head_b)
@@ -56,9 +53,9 @@ void    five_numbers(t_node **head_a, t_node **head_b)
 }
 
 // void    hundred_numbers(t_node **head_a, t_node **head_b)
-// {
+// // {
 
-// }
+// // }
 
 
 
@@ -68,6 +65,18 @@ void    five_numbers(t_node **head_a, t_node **head_b)
 
 int main(int argc, char **argv)
 {
-    error_checker(argc,argv);
+    t_node *head_a = NULL;
+    t_node  *head_b = NULL;
+    int size;
+
+
+    error_checker(argc,argv, &head_a);
+
+    lstiter(&head_a, print_integer);
+    size = lstsize(&head_a);
+    printf("size of stack: %d\n", size);
+
+    //three_numbers(&head_a);
+    five_numbers(&head_a, &head_b);
     return 0;
 }

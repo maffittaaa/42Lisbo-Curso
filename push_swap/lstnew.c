@@ -8,8 +8,18 @@ void   lstnew(t_node **head, int number)
    if (!new_node)
       return ;
    new_node->content = number;
-   new_node->prevInLine = (*head)->prevInLine;
-   new_node->nextInLine = *head;
-   (*head)->prevInLine = new_node;
+   if(!*head)
+   {
+      (*head) = new_node;
+      new_node->prevInLine = new_node;
+      new_node->nextInLine = new_node;
+   }
+   else
+   {
+      new_node->prevInLine = (*head)->prevInLine;
+      (*head)->prevInLine->nextInLine = new_node;
+      (*head)->prevInLine = new_node;
+      new_node->nextInLine = *head;
+   }
 }
 

@@ -50,17 +50,17 @@ int isDuplicate(int argc, char **argv)
     return (0);
 }
 
-int find_max(t_node **last)
+int find_max(t_node **head)
 {
-    int     max;
+    int min;
 
-    max = (*last)->index;
-    while ((*last)->prevInLine)
+    min = (*head)->index;
+    while ((*head)->nextInLine)
     {
-        if ((*last)->index > max)
-            max = (*last)->index;
+        if ((*head)->index < min)
+            min = (*head)->index;
     }
-    return (max);
+    return (min);
 }
 
 int find_min(t_node **head)

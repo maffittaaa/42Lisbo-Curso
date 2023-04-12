@@ -1,39 +1,23 @@
 #include "push_swap.h"
 
-void    add_new_node(t_node **head, int num) 
+// void    push(t_node **head, int num) 
+// {
+//     lstnew(head, num);
+//     *head = (*head)->prevInLine;
+// }
+
+// void    pop(t_node **head)
+// {
+//     t_node *temp;
+
+//     if (*head == NULL)
+//         return ;
+//     temp = *head;
+//     *head = (*head)->nextInLine;
+//     (*head)->prevInLine = temp->prevInLine;
+// }
+
+void    print_integer(int *content)
 {
-    lstnew(head, num);
-    *head = (*head)->prevInLine;
-}
-
-int remove_top_node(t_node **head)
-{
-    int content;
-    t_node *last;
-
-    if (*head == NULL)
-        return (-1);
-    content = (*head)->content;
-    last = (*head)->prevInLine;
-    *head = last;
-    return (content);
-}
-
-void    see_int(void *ptr)
-{
-    int *value;
-
-    value = (int*)ptr;
-    printf("%d", *value);
-}
-
-void    create_stack(t_node **head, int num)
-{
-    add_new_node(head, num);
-    lstsize(head);
-    remove_top_node(head);
-    lstsize(head);
-    lstiter(head, see_int);
-    printf("/n");
-
+    printf("%d\n", *content);
 }
