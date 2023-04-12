@@ -2,36 +2,35 @@
 
 void stack_swap(t_node **head)
 {
-	t_node  *last;
+	t_node  *thead;
     t_node  *sec;
     
     if (length(head) <= 1)
         return ;
 
-    last = (*head)->prevInLine;
+    thead = (*head);
     sec = (*head)->nextInLine;
 
-    sec->prevInLine = last;
-    sec->nextInLine->prevInLine = *head;
-    (*head)->nextInLine = sec->nextInLine;
-    sec->nextInLine = *head; 
-    *head = sec;
+    //ultimo next !
+    //terceiro prev !
+    //bracos do sec
+    //bracos do thead
+    //head = sec
+    thead->prevInLine->nextInLine = sec;
+    sec->nextInLine->prevInLine = thead;
+    thead->nextInLine = sec->nextInLine;
+    sec->nextInLine = thead;
+    sec->prevInLine = thead->prevInLine;
+    thead->prevInLine = sec;
+    (*head) = sec;
 }
 
 void stack_rotate(t_node **head)
 {
-	t_node  *sec;
-   
-    sec = (*head)->nextInLine;
-
-    *head = sec;
+    *head = (*head)->nextInLine;
 }
 
 void stack_reverse_rotate(t_node **head)
 {
-	t_node *last;
-
-	last = (*head)->prevInLine;
-
-	*head = last;
+	*head = (*head)->prevInLine;
 }

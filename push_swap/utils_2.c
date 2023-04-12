@@ -76,3 +76,8 @@ int find_min(t_node **head)
     return (min);
     
 }
+
+void    print_integer(int *content)
+{
+    printf("%d\n", *content);
+}
