@@ -24,21 +24,24 @@ void    three_numbers(t_node **head)
         rotate_a(head);
 }
 
-void    five_numbers(t_node **head_a, t_node **head_b)
+void    five_numbers(int *arr, int left, int right)
 {
-    
+    merge_sort(head, left, right);
 }
 
 int main(int argc, char **argv)
 {
     t_node *head_a = NULL;
+    int *arr = NULL;
+    int left = 0;
+    int right = 0;
     //t_node *head_b = NULL;
 
     error_checker(argc,argv, &head_a);
 
-    three_numbers(&head_a);
+    //three_numbers(&head_a);
     lstiter(&head_a, print_integer);
-    //five_numbers(&head_a, &head_b);
+    five_numbers(arr, left, right);
 
     return 0;
 }
