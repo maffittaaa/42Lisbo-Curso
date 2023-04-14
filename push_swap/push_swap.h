@@ -48,12 +48,9 @@ int     error_checker(int argc, char **argv, t_node **head_a);
 int     isNumber(char *number);
 int     isDuplicate(int argc, char **argv);
 int     find_max(t_node **head);
-int     find_min(t_node **head);
-
 void    print_integer(int *content);
 
 void    merge_arrays(t_node **head, int left, int middle, int right);
 void    merge_sort(t_node **head, int left, int right);
-void    sorting_while_inserting(t_node **head, t_node *new_node);
 
 #endif

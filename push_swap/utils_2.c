@@ -52,29 +52,19 @@ int isDuplicate(int argc, char **argv)
 
 int find_max(t_node **head)
 {
-    int min;
+    t_node *max;
+    t_node *temp;
 
-    min = (*head)->index;
-    while ((*head)->nextInLine)
+    temp = (*head)->nextInLine;
+    max = *head;
+
+    while (temp != *head)
     {
-        if ((*head)->index < min)
-            min = (*head)->index;
+        if (temp->content > max->content)
+            max = temp;
+        temp = temp->nextInLine;
     }
-    return (min);
-}
-
-int find_min(t_node **head)
-{
-    int min;
-
-    min = (*head)->index;
-    while ((*head)->nextInLine)
-    {
-        if ((*head)->index < min)
-            min = (*head)->index;
-    }
-    return (min);
-    
+    return (max->content);
 }
 
 void    print_integer(int *content)
