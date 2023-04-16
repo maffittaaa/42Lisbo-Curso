@@ -37,7 +37,10 @@ int main(int argc, char **argv)
 
     //three_numbers(&head_a);
     //lstiter(&head_a, print_integer);
-    printf("%d\n", find_max(&head_a));
+    // printf("%d\n", find_max(&head_a));
+    // printf("%d\n", find_min(&head_a)); 
+    insertion_sort(&head_a);  
+    lstiter(&head_a, print_integer);
     //five_numbers(&head_a);
 
     return 0;

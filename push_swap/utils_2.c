@@ -67,6 +67,24 @@ int find_max(t_node **head)
     return (max->content);
 }
 
+t_node *find_min(t_node **head)
+{
+    t_node *min;
+    t_node *temp;
+
+    temp = (*head)->nextInLine;
+    min = *head;
+
+    while (temp != *head)
+    {
+        if (temp->content < min->content)
+            min = temp;
+        temp = temp->nextInLine;
+    }
+    return (min);
+            
+}
+
 void    print_integer(int *content)
 {
     printf("%d\n", *content);
