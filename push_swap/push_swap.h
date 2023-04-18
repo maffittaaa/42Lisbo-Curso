@@ -52,5 +52,7 @@ t_node  *find_min(t_node **head);
 void    print_integer(int *content);
 
 void    insertion_sort(t_node **head);
+float   mean_of_nodes(t_node **head);
+void    ten_or_more(t_node **head_a, t_node **head_b);
 
 #endif

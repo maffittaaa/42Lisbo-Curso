@@ -32,6 +32,7 @@ void    three_numbers(t_node **head)
 int main(int argc, char **argv)
 {
     t_node *head_a = NULL;
+    t_node *head_b = NULL;
 
     error_checker(argc,argv, &head_a);
 
@@ -39,8 +40,12 @@ int main(int argc, char **argv)
     //lstiter(&head_a, print_integer);
     // printf("%d\n", find_max(&head_a));
     // printf("%d\n", find_min(&head_a)); 
-    insertion_sort(&head_a);  
+    //insertion_sort(&head_a);
+    printf("%d is the lenght\n", length(&head_a));
+    printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
+    ten_or_more(&head_a, &head_b);
     lstiter(&head_a, print_integer);
+
     //five_numbers(&head_a);
 
     return 0;

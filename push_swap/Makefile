@@ -4,11 +4,12 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 				lstnew.c					lstsize.c \
 				lstiter.c					push_swap.c \
 				stack_instructions.c		utils.c \
-				utils_2.c					insertion_sort.c			
+				utils_2.c					insertion_sort.c	\
+				ten_or_more.c			
 
 CC = 			cc
 
-CFLAGS = 		-Wall -Werror -Wextra 
+CFLAGS = 		-Wall -Werror -Wextra -g -fsanitize=address
 
 RM = 			rm -f
 

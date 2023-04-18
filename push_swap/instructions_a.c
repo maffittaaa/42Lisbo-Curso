@@ -18,30 +18,33 @@ void reverse_rotate_a(t_node **head_a)
     stack_reverse_rotate(head_a);
 }
 
-void push_a(t_node **head_a, t_node **head_b)
+void push_a(t_node **head_b, t_node **head_a)
 {
     printf("pa\n");
-
-    t_node *last_b;
-    t_node *sec_b;
-    t_node *last_a;
+    t_node *tmp;
 
     if (*head_b == NULL)
         return ;
-    last_b = (*head_b)->prevInLine;
-    sec_b = (*head_b)->nextInLine;
-    last_a = (*head_a)->prevInLine;
-
-    (*head_a)->prevInLine = *head_b;
-    last_a->nextInLine = *head_b;
-    (*head_b)->prevInLine = last_a;
-    (*head_b)->nextInLine = *head_a;
-    if (length(head_b) > 1) // funcao que calcule a length do stack
+    tmp = *head_b;
+    if (length(head_b) > 1)
     {
-        *head_b = sec_b;
-        last_b->nextInLine = sec_b;
-        sec_b->prevInLine = last_b;
+        (*head_b)->prevInLine->nextInLine = (*head_b)->nextInLine;
+        (*head_b)->nextInLine->prevInLine = (*head_b)->prevInLine;
+        *head_b = tmp->nextInLine;
     }
     else
         *head_b = 0;
+    if (length(head_a) > 0)
+    {    
+        tmp->nextInLine = *head_a;
+        (*head_a)->prevInLine->nextInLine = tmp;
+        (*head_a)->prevInLine = tmp;
+        *head_a = tmp;
+    } 
+    else
+    {
+        *head_a = tmp;
+        tmp->nextInLine = tmp;
+        tmp->prevInLine = tmp;
+    }
 }

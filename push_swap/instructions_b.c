@@ -20,27 +20,32 @@ void reverse_rotate_b(t_node **head_b)
 
 void push_b(t_node **head_a, t_node **head_b)
 {
+    t_node *tmp;
+
     printf("pb\n");
-
-    t_node *last_b;
-    t_node *sec_b;
-
     if (*head_a == NULL)
         return ;
-    last_b = (*head_b)->prevInLine;
-    sec_b = (*head_b)->nextInLine;
-
-    (*head_b)->prevInLine = *head_a;
-    last_b->nextInLine = *head_a;
-    (*head_a)->prevInLine = last_b;
-    (*head_a)->nextInLine = *head_b;
-    if (length(head_a) > 1) // funcao que calcule a length do stack
+    tmp = *head_a;
+    if (length(head_a) > 1)
     {
-        *head_b = sec_b;
-        last_b->nextInLine = sec_b;
-        sec_b->prevInLine = last_b;
+        (*head_a)->prevInLine->nextInLine = (*head_a)->nextInLine;
+        (*head_a)->nextInLine->prevInLine = (*head_a)->prevInLine;
+        *head_a = (*head_a)->nextInLine;
     }
     else
         *head_a = 0;
-
+    if (length(head_b) > 0)
+    {
+        tmp->nextInLine = *head_b;
+        tmp->prevInLine = (*head_b)->prevInLine;
+        (*head_b)->prevInLine->nextInLine = tmp;
+        (*head_b)->prevInLine = tmp;
+        *head_b = tmp;
+    }
+    else
+    {
+        *head_b = tmp;
+        tmp->nextInLine = tmp;
+        tmp->prevInLine = tmp;
+    }
 }
