@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     //insertion_sort(&head_a);
     printf("%d is the lenght\n", length(&head_a));
     printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
-    ten_or_more(&head_a, &head_b);
+     ten_or_more(&head_a, &head_b);
     lstiter(&head_a, print_integer);
 
     //five_numbers(&head_a);

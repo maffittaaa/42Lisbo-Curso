@@ -21,14 +21,40 @@ float   mean_of_nodes(t_node **head)
     return (mean);
 }
 
-int cost_to_go_up(t_node **head)
+int calculate_cost_up(int size, int index)
 {
-    
+    int count;
+
+    count = 0;
+    if (index <= (size / 2))
+        count = index;
+    else if (index > (size / 2))
+        count = size - index;
+    return (count);
 }
 
-int best_friend(t_node **head)
+int best_friend(t_node **head_a, t_node **head_b)
 {
+    t_node *tmp;
+    int counter;
+    int best_friend;
 
+    tmp = *head_b;
+    counter = 0;
+    best_friend = 0;
+    while (length(head_a))
+    {
+        tmp->content = (*head_a)->content - (*head_b)->content;
+        if ((*head_a)->content > tmp->content)
+        {
+            counter = tmp->content;
+            best_friend = (*head_a)->content;
+        }
+        else
+            (*head_a) = (*head_a)->nextInLine;
+    }
+    return (best_friend);
+    
 }
 
 void    ten_or_more(t_node **head_a, t_node **head_b)
@@ -43,6 +69,8 @@ void    ten_or_more(t_node **head_a, t_node **head_b)
         else if ((*head_a)->content > mean)
             rotate_a(head_a);
         printf("%f is the mean of the nodes\n", mean_of_nodes(head_a));
-
     }
+    while (length(head_a) == 5)
+        best_friend(head_a, head_b);
+
 }

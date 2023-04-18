@@ -54,5 +54,6 @@ void    print_integer(int *content);
 void    insertion_sort(t_node **head);
 float   mean_of_nodes(t_node **head);
 void    ten_or_more(t_node **head_a, t_node **head_b);
-
+int     best_friend(t_node **head_a, t_node **head_b);
+int     calculate_cost_up(int size, int index);
 #endif
