@@ -37,6 +37,7 @@ void push_a(t_node **head_b, t_node **head_a)
     if (length(head_a) > 0)
     {    
         tmp->nextInLine = *head_a;
+        tmp->prevInLine = (*head_a)->prevInLine;
         (*head_a)->prevInLine->nextInLine = tmp;
         (*head_a)->prevInLine = tmp;
         *head_a = tmp;

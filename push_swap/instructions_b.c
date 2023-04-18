@@ -30,7 +30,7 @@ void push_b(t_node **head_a, t_node **head_b)
     {
         (*head_a)->prevInLine->nextInLine = (*head_a)->nextInLine;
         (*head_a)->nextInLine->prevInLine = (*head_a)->prevInLine;
-        *head_a = (*head_a)->nextInLine;
+        *head_a = tmp->nextInLine;
     }
     else
         *head_a = 0;

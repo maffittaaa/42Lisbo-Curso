@@ -21,6 +21,16 @@ float   mean_of_nodes(t_node **head)
     return (mean);
 }
 
+int cost_to_go_up(t_node **head)
+{
+    
+}
+
+int best_friend(t_node **head)
+{
+
+}
+
 void    ten_or_more(t_node **head_a, t_node **head_b)
 {
     float   mean;
