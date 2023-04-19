@@ -32,7 +32,8 @@ void    three_numbers(t_node **head)
 int main(int argc, char **argv)
 {
     t_node *head_a = NULL;
-    t_node *head_b = NULL;
+     //t_node *head_b = NULL;
+     long number = 0;
 
     error_checker(argc,argv, &head_a);
 
@@ -43,7 +44,9 @@ int main(int argc, char **argv)
     //insertion_sort(&head_a);
     printf("%d is the lenght\n", length(&head_a));
     printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
-     ten_or_more(&head_a, &head_b);
+    // printf("%d is the index of the nodes\n", get_index(&head_a, number));
+    //ten_or_more(&head_a, &head_b);
+     printf ("%d is the best friend\n", get_best_friend(&head_a, number));
     lstiter(&head_a, print_integer);
 
     //five_numbers(&head_a);

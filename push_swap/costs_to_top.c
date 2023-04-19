@@ -10,26 +10,27 @@ unsigned int    absolute(int number)
     return (x);
 }
 
-int find_best_move(t_node **head_a, t_node **head_b)
+void find_best_move(t_node **head_a, t_node **head_b)
 {
-    t_node *tmp_a;
+    printf("4");
     t_node *tmp_b;
-    int max_moves;
+    long long int max_moves;
     int moves_a;
     int moves_b;
     int i;
     int k;
-    t_node *tmp_i;
+    int tmp_i;
+    int number;
 
     max_moves = __LONG_LONG_MAX__;
     i = 0;
     k = 0;
-    tmp_a = *head_a;
+    number = 0;
     tmp_b = *head_b;
     tmp_i = i;
     while (tmp_b->nextInLine != *head_b)
     {
-        k = get_best_friend(head_a, head_b);
+        k = get_best_friend(head_a, number);
         if (k > (length(head_a) / 2))
             k = (length(head_a) - k) * (-1);
         if (i > (length(head_b) / 2))

@@ -53,5 +53,5 @@ int	get_index(t_node **head, int num)
 		i++;
 		(*head) = (*head)->nextInLine;
 	}
-	return (0);
+	return (-1);
 }
