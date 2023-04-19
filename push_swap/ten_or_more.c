@@ -21,19 +21,7 @@ float   mean_of_nodes(t_node **head)
     return (mean);
 }
 
-int calculate_cost_up(int size, int index)
-{
-    int count;
-
-    count = 0;
-    if (index <= (size / 2))
-        count = index;
-    else if (index > (size / 2))
-        count = size - index;
-    return (count);
-}
-
-int best_friend(t_node **head_a, t_node **head_b)
+int get_best_friend(t_node **head_a, t_node **head_b)
 {
     t_node *tmp;
     int counter;
@@ -53,7 +41,7 @@ int best_friend(t_node **head_a, t_node **head_b)
         else
             (*head_a) = (*head_a)->nextInLine;
     }
-    return (best_friend);
+    return (get_index(head_a, best_friend));
     
 }
 
@@ -70,7 +58,10 @@ void    ten_or_more(t_node **head_a, t_node **head_b)
             rotate_a(head_a);
         printf("%f is the mean of the nodes\n", mean_of_nodes(head_a));
     }
-    while (length(head_a) == 5)
-        best_friend(head_a, head_b);
+    while (length(head_b))
+    {
+        
+    }
+            
 
 }
