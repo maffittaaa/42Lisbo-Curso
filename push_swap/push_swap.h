@@ -33,7 +33,7 @@ void            stack_rotate(t_node **head);
 void            stack_reverse_rotate(t_node **head);
 
 void            three_numbers(t_node **head);
-void            five_numbers(t_node **head);
+void            five_numbers(t_node **head_a, t_node **head_b);
 void            hundred_numbers(t_node **head_a, t_node **head_b);
 
 void            lstnew(t_node **head, int number);
@@ -48,7 +48,7 @@ int             error_checker(int argc, char **argv, t_node **head_a);
 int             isNumber(char *number);
 int             isDuplicate(int argc, char **argv);
 int             find_max(t_node **head);
-t_node          *find_min(t_node **head);
+int             find_min(t_node **head);
 void            print_integer(int *content);
 
 void            insertion_sort(t_node **head);

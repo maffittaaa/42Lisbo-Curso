@@ -3,12 +3,9 @@
 
 unsigned int    absolute(int number)
 {
-    int x;
-
-    x = number;
     if (number < 0)
-        x = -number;
-    return (x);
+        return (-number);
+    return (number);
 }
 
 void find_best_move(t_node **head_a, t_node **head_b)
@@ -26,12 +23,12 @@ void find_best_move(t_node **head_a, t_node **head_b)
     k = 0;
     tmp_b = *head_b;
     tmp_i = i;
-    while (i < length(head_b))
+    while (i++ < length(head_b))
     {
         k = get_best_friend(head_a, tmp_b->content);
-        if (k > (length(head_a) / 2))
-            k = (length(head_a) - k) * (-1);
-        if (i > (length(head_b) / 2))
+        if (k >= length(head_a) / 2)
+            k = (length(head_a) - k ) * (-1);
+        if (i >= length(head_b) / 2)
             tmp_i = (length(head_b) - i) * (-1);
         if ((absolute(tmp_i) + absolute(k)) < max_moves)
         {
@@ -40,29 +37,28 @@ void find_best_move(t_node **head_a, t_node **head_b)
             moves_b = tmp_i;
         }
         tmp_b = tmp_b->nextInLine;
-        i++;
     }
 
-    while (moves_b > 0)
-    {
-        reverse_rotate_b(head_b);
-        moves_b--;
-    }
     while (moves_b < 0)
     {
-        rotate_b(head_b);
+        reverse_rotate_b(head_b);
         moves_b++;
+    }
+    while (moves_b > 0)
+    {
+        rotate_b(head_b);
+        moves_b--;
     }
     while (moves_a > 0)
     {
-        reverse_rotate_a(head_a);
+        rotate_a(head_a);
         moves_a--;
     }
-    while (moves_a > 0)
+    while (moves_a < 0)
     {
         reverse_rotate_a(head_a);
         moves_a++;
     }
-    push_a(head_a, head_b);
+    push_a(head_b, head_a);
 }
 

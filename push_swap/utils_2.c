@@ -67,7 +67,7 @@ int find_max(t_node **head)
     return (max->content);
 }
 
-t_node *find_min(t_node **head)
+int find_min(t_node **head)
 {
     t_node *min;
     t_node *temp;
@@ -81,7 +81,7 @@ t_node *find_min(t_node **head)
             min = temp;
         temp = temp->nextInLine;
     }
-    return (min);
+    return (min->content);
             
 }
 
