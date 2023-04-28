@@ -4,8 +4,8 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 				lstnew.c					lstsize.c \
 				lstiter.c					push_swap.c \
 				stack_instructions.c		utils.c \
-				utils_2.c					\
-				ten_or_more.c				costs_to_top.c
+				utils_2.c					costs_to_top.c \
+				ten_or_more.c				
 
 CC = 			cc
 

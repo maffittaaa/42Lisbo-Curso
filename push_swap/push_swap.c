@@ -62,15 +62,8 @@ int main(int argc, char **argv)
 
     if (error_checker(argc,argv, &head_a))
         return (1);
-
-    //three_numbers(&head_a);
-    //lstiter(&head_a, print_integer);
-    // printf("%d\n", find_max(&head_a));
-    // printf("%d\n", find_min(&head_a)); 
-    //insertion_sort(&head_a);
     printf("%d is the lenght\n", length(&head_a));
     printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
-    // printf("%d is the index of the nodes\n", get_index(&head_a, number));
     if (length(&head_a) > 9)
         ten_or_more(&head_a, &head_b);
     else if (length(&head_a) == 3)
@@ -78,8 +71,6 @@ int main(int argc, char **argv)
     else
         five_numbers(&head_a, &head_b, length(&head_a));
     lstiter(&head_a, print_integer);
-
-    //five_numbers(&head_a);
 
     return 0;
 }

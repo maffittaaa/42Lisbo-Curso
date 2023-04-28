@@ -40,18 +40,3 @@ int length(t_node **head)
 	}
 	return (i);
 }
-
-int	get_index(t_node **head, int num)
-{
-	int	i;
-
-	i = 0;
-	while (*head)
-	{
-		if ((*head)->content == num)
-			return (i);
-		i++;
-		(*head) = (*head)->nextInLine;
-	}
-	return (-1);
-}
