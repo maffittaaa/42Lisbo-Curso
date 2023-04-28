@@ -17,7 +17,7 @@ typedef struct s_node
 void            swap_a(t_node **head_a);
 void            rotate_a(t_node **head_a);
 void            reverse_rotate_a(t_node **head_a);
-void            push_a(t_node **head_a, t_node **head_b);
+void            push_a(t_node **head_b, t_node **head_a);
 
 void            swap_b(t_node **head_b);
 void            rotate_b(t_node **head_b);
@@ -33,7 +33,7 @@ void            stack_rotate(t_node **head);
 void            stack_reverse_rotate(t_node **head);
 
 void            three_numbers(t_node **head);
-void            five_numbers(t_node **head_a, t_node **head_b);
+void            five_numbers(t_node **head_a, t_node **head_b, int len);
 void            hundred_numbers(t_node **head_a, t_node **head_b);
 
 void            lstnew(t_node **head, int number);

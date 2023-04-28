@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <unistd.h>
 
 void    three_numbers(t_node **head)
 {
@@ -23,23 +24,35 @@ void    three_numbers(t_node **head)
     else if ((*head)->nextInLine->content < (*head)->prevInLine->content && (*head)->nextInLine->content < (*head)->content)
         rotate_a(head);
 }
-void    five_numbers(t_node **head_a, t_node **head_b)
+void    five_numbers(t_node **head_a, t_node **head_b, int len)
 {   
     int max;
-    // int min;
+    int min;
 
     max = find_max(head_a);
-    // min = find_min(head_a);
+    min = find_min(head_a);
+    printf("max = %d, min = %d\n", max, min);
 
-    push_b(head_a, head_b);
-    push_b(head_a, head_b);
+    while (length(head_a) > 3)
+        push_b(head_a, head_b);
     three_numbers(head_a);
-    while ((*head_a)->nextInLine->content > (*head_a)->content && (*head_a)->nextInLine->content < (*head_a)->prevInLine->content)
-    { 
-        push_a(head_a, head_b);
-        if (*head_a == (*head_a)->nextInLine || *head_a == (*head_a)->nextInLine->nextInLine || *head_a == (*head_a)->nextInLine->nextInLine->nextInLine)
-        
+    while (length(head_a) < len)
+    {
+    lstiter(head_a, print_integer);
+        if ((*head_b)->content == max
+            || (*head_b)->content == min
+            || (*head_b)->content > find_max(head_a)
+            || (*head_b)->content < find_min(head_a))
+            while ((*head_a)->content != find_min(head_a))
+                rotate_a(head_a);
+        else
+          while (!((*head_a)->content > (*head_b)->content
+            && (*head_a)->prevInLine->content < (*head_b)->content))
+            rotate_a(head_a);
+        push_a(head_b, head_a);
     }
+    while ((*head_a)->content != min)
+        rotate_a(head_a);   
 }
 
 int main(int argc, char **argv)
@@ -58,8 +71,12 @@ int main(int argc, char **argv)
     printf("%d is the lenght\n", length(&head_a));
     printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
     // printf("%d is the index of the nodes\n", get_index(&head_a, number));
-    //ten_or_more(&head_a, &head_b);
-    five_numbers(&head_a, &head_b);
+    if (length(&head_a) > 9)
+        ten_or_more(&head_a, &head_b);
+    else if (length(&head_a) == 3)
+        three_numbers(&head_a);
+    else
+        five_numbers(&head_a, &head_b, length(&head_a));
     lstiter(&head_a, print_integer);
 
     //five_numbers(&head_a);
