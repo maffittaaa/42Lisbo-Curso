@@ -22,14 +22,17 @@ void find_best_move(t_node **head_a, t_node **head_b)
     i = 0;
     k = 0;
     tmp_b = *head_b;
-    tmp_i = i;
-    while (tmp_b->nextInLine != *head_b)
+    printf("\nB\n");
+    lstiter(head_b, print_integer);
+    while (i < length(head_b))
     {
+        tmp_i = i;
         k = get_best_friend(head_a, tmp_b->content);
         if (k > length(head_a) / 2)
             k = (length(head_a) - k ) * (-1);
         if (i > length(head_b) / 2)
             tmp_i = (length(head_b) - i) * (-1);
+        printf("k = %d, tmp_i = %d\n", k, tmp_i);
         if ((absolute(tmp_i) + absolute(k)) < max_moves)
         {
             max_moves = absolute(tmp_i) + absolute(k);
@@ -38,7 +41,6 @@ void find_best_move(t_node **head_a, t_node **head_b)
         }
         i++;
         tmp_b = tmp_b->nextInLine;
-
     }
     printf("moves_a = %d, moves_b = %d\n", moves_a, moves_b);
 
@@ -63,5 +65,7 @@ void find_best_move(t_node **head_a, t_node **head_b)
         moves_a++;
     }
     push_a(head_b, head_a);
+    printf("\nA\n");
+    lstiter(head_a, print_integer);
 }
 

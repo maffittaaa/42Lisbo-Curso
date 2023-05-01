@@ -32,7 +32,7 @@ int get_best_friend(t_node **head_a, int number)
     best_diff = 2147483647;
     iterator = -1;
     tmp = *head_a;
-    while (++iterator < length(head_a))
+    while (++iterator < length(head_a) + 1)
     {
         if (tmp->content - number > 0 && tmp->content - number < best_diff)
         {
@@ -42,6 +42,34 @@ int get_best_friend(t_node **head_a, int number)
         tmp = tmp->nextInLine;
     }
     return (best_friend_i);
+}
+
+void    min_up(t_node **head_a)
+{
+    t_node *tmp;
+    int min;
+    int i;
+
+    min = find_min(head_a);
+    i = 0;
+    tmp = *head_a;
+    while (tmp->content != min)
+    {
+        i++;
+        tmp = tmp->nextInLine;
+    }
+    if (i > length(head_a) / 2)
+        i = (length(head_a) - i) * (-1);
+    while (i < 0)
+    {
+        reverse_rotate_a(head_a);
+        i++;
+    }
+    while (i > 0)
+    {
+        rotate_a(head_a);
+        i--;
+    }
 }
 
 void    ten_or_more(t_node **head_a, t_node **head_b)
@@ -56,9 +84,9 @@ void    ten_or_more(t_node **head_a, t_node **head_b)
         else if ((*head_a)->content > mean)
             rotate_a(head_a);
         printf("%f is the mean of the nodes\n", mean_of_nodes(head_a));
-        lstiter(head_a, print_integer);
     }
     five_numbers(head_a, head_b, 5);
     while (length(head_b))
         find_best_move(head_a, head_b);
+    min_up(head_a);
 }

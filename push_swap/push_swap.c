@@ -38,7 +38,6 @@ void    five_numbers(t_node **head_a, t_node **head_b, int len)
     three_numbers(head_a);
     while (length(head_a) < len)
     {
-    lstiter(head_a, print_integer);
         if ((*head_b)->content == max
             || (*head_b)->content == min
             || (*head_b)->content > find_max(head_a)
@@ -53,6 +52,7 @@ void    five_numbers(t_node **head_a, t_node **head_b, int len)
     }
     while ((*head_a)->content != min)
         rotate_a(head_a);   
+    lstiter(head_a, print_integer);
 }
 
 int main(int argc, char **argv)
