@@ -17,7 +17,7 @@ int isNumber(char *number)
     int i;
 
     i = 0;
-    if (number[i] == '-')
+    if (number[i] == '-' || number[i] == '+')
         i++;
     while(number[i] != 0)
     {
@@ -30,22 +30,29 @@ int isNumber(char *number)
 }
 
 //verificar se o argumento passado e duplicado
-int isDuplicate(int argc, char **argv)
+int isDuplicate(t_node **head)
 {
+    t_node *tmp;
+    t_node *tmp2;
     int i;
     int j;
 
     i = 0;
-    while (i < argc) 
+    tmp = *head;
+    tmp2 = tmp->nextInLine;
+    while (i < length(head))
     {
-        j = i + 1;
-        while (j < argc)
+        while (i < tmp->content) 
         {
-            if (!ft_strcmp(argv[i],argv[j]))
-                return (1);
-            j++;
+            j = i + 1;
+            while (j < tmp2->content)
+            {
+                if (i == j)
+                    return (1);
+                j++;
+            }
+            i++;
         }
-        i++;
     }
     return (0);
 }

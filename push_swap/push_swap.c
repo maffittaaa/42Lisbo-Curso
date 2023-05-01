@@ -1,5 +1,4 @@
 #include "push_swap.h"
-#include <unistd.h>
 
 void    three_numbers(t_node **head)
 {

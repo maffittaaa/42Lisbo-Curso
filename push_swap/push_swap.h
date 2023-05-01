@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 #include "libft.h"
 
 typedef struct s_node
@@ -46,7 +47,7 @@ int	            ft_strcmp(char *s1, char *s2);
 
 int             error_checker(int argc, char **argv, t_node **head_a);
 int             isNumber(char *number);
-int             isDuplicate(int argc, char **argv);
+int             isDuplicate(t_node **head);
 int             find_max(t_node **head);
 int             find_min(t_node **head);
 void            print_integer(int *content);
