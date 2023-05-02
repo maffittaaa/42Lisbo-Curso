@@ -1,7 +1,7 @@
 push_swap/push_swap_tester/*
 push_swap/push_swap_tester
 push_swap/*.o
-libft/*.o
+push_swap/libft/*.o
 get_net_line/*.o
 ft_printf/*.o
 so_long/*.o
