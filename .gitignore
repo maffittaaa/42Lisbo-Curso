@@ -1,8 +1,2 @@
-*/*.out
-*/*.o
-*.o
-*.out
-*.a
-*/*.a
-.DS_Store
-/*/.DS_Store
+push_swap/push_swap_tester/*
+push_swap/push_swap_tester
