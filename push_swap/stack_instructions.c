@@ -10,12 +10,6 @@ void stack_swap(t_node **head)
 
     thead = (*head);
     sec = (*head)->nextInLine;
-
-    //ultimo next !
-    //terceiro prev !
-    //bracos do sec
-    //bracos do thead
-    //head = sec
     thead->prevInLine->nextInLine = sec;
     sec->nextInLine->prevInLine = thead;
     thead->nextInLine = sec->nextInLine;

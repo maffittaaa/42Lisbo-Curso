@@ -17,6 +17,8 @@ int isNumber(char *number)
     int i;
 
     i = 0;
+    if (ft_strlen(number) > 11)
+        return (0);
     if (number[i] == '-' || number[i] == '+')
         i++;
     while(number[i] != 0)
@@ -31,32 +33,28 @@ int isNumber(char *number)
 
 //verificar se o argumento passado e duplicado
 int isDuplicate(t_node **head)
-{
+{   
     t_node *tmp;
     t_node *tmp2;
-    int i;
-    int j;
 
-    i = 0;
+    if (*head == NULL)
+        return (0);
     tmp = *head;
-    tmp2 = tmp->nextInLine;
-    while (i < length(head))
+    while (tmp->nextInLine != *head)
     {
-        while (i < tmp->content) 
+        tmp2 = tmp->nextInLine;
+        while (tmp2->nextInLine != (*head)->nextInLine)
         {
-            j = i + 1;
-            while (j < tmp2->content)
-            {
-                if (i == j)
-                    return (1);
-                j++;
-            }
-            i++;
+            if (tmp->content == tmp2->content)
+                return (1);
+            tmp2 = tmp2->nextInLine;
         }
+        tmp = tmp->nextInLine;
     }
     return (0);
 }
 
+//encontra o maximo no stack que estamos
 int find_max(t_node **head)
 {
     t_node *max;
@@ -74,6 +72,7 @@ int find_max(t_node **head)
     return (max->content);
 }
 
+//encontra o minimo no stack que estamos
 int find_min(t_node **head)
 {
     t_node *min;
@@ -92,6 +91,7 @@ int find_min(t_node **head)
             
 }
 
+//da print aos numeros
 void    print_integer(int *content)
 {
     printf("%d\n", *content);

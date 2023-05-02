@@ -11,8 +11,6 @@ int error_checker(int argc, char **argv, t_node **head_a)
     INT_MIN = -2147483648;
 
     //enquanto nao chegar ao fim dos argumentos verificar se sao numeros ou duplicados
-    if (isDuplicate(head_a) == 1)
-        printf("Error - Duplicate numbers\n");
     while (i < argc)
     {
         if (isNumber(argv[i]) == 0)
@@ -30,11 +28,12 @@ int error_checker(int argc, char **argv, t_node **head_a)
             printf("Error - small number\n");
             return (1);
         }
-
         i++;
     }
     i = 0;
     while (++i < argc)
         lstnew(head_a, ft_atoi(argv[i]));
+    if (isDuplicate(head_a) == 1 && printf("Error - Duplicate numbers\n"))
+        return (1);
     return (0);
 }

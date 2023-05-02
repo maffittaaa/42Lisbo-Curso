@@ -40,6 +40,7 @@ void            hundred_numbers(t_node **head_a, t_node **head_b);
 void            lstnew(t_node **head, int number);
 int             lstsize(t_node **head);
 void            lstiter(t_node **head, void (*f)(int *));
+void            lstiter_node(t_node **head, void (*f)(void *));
 
 long	        ft_atol(const char *str);
 int             length(t_node **head);
@@ -57,5 +58,6 @@ void            ten_or_more(t_node **head_a, t_node **head_b);
 int             get_best_friend(t_node **head_a, int number);
 void            find_best_move(t_node **head_a, t_node **head_b);
 unsigned int    absolute(int number);
+void            min_up(t_node **head_a);
 
 #endif

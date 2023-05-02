@@ -30,7 +30,6 @@ void    five_numbers(t_node **head_a, t_node **head_b, int len)
 
     max = find_max(head_a);
     min = find_min(head_a);
-    printf("max = %d, min = %d\n", max, min);
 
     while (length(head_a) > 3)
         push_b(head_a, head_b);
@@ -49,9 +48,7 @@ void    five_numbers(t_node **head_a, t_node **head_b, int len)
             rotate_a(head_a);
         push_a(head_b, head_a);
     }
-    while ((*head_a)->content != min)
-        rotate_a(head_a);   
-    lstiter(head_a, print_integer);
+    min_up(head_a); 
 }
 
 int main(int argc, char **argv)
@@ -59,17 +56,20 @@ int main(int argc, char **argv)
     t_node *head_a = NULL;
     t_node *head_b = NULL;
 
+    if (argc < 2)
+        return (0);
     if (error_checker(argc,argv, &head_a))
+    {
+        lstiter_node(&head_a, free);
         return (1);
-    printf("%d is the lenght\n", length(&head_a));
-    printf("%f is the mean of the nodes\n", mean_of_nodes(&head_a));
+    }
     if (length(&head_a) > 9)
         ten_or_more(&head_a, &head_b);
     else if (length(&head_a) == 3)
         three_numbers(&head_a);
     else
         five_numbers(&head_a, &head_b, length(&head_a));
-    lstiter(&head_a, print_integer);
+    lstiter_node(&head_a, free);
 
     return 0;
 }

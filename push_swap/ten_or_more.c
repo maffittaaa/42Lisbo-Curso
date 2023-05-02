@@ -83,7 +83,6 @@ void    ten_or_more(t_node **head_a, t_node **head_b)
             push_b(head_a, head_b);
         else if ((*head_a)->content > mean)
             rotate_a(head_a);
-        printf("%f is the mean of the nodes\n", mean_of_nodes(head_a));
     }
     five_numbers(head_a, head_b, 5);
     while (length(head_b))
