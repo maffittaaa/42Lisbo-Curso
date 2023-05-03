@@ -5,7 +5,8 @@ FUNCTIONS =		error_checker.c				instructions_a.c \
 				lstiter.c					push_swap.c \
 				stack_instructions.c		utils.c \
 				utils_2.c					costs_to_top.c \
-				ten_or_more.c				
+				ten_or_more.c				three_numbers.c	\
+				five_to_nine.c
 
 CC = 			cc
 
