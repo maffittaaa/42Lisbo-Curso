@@ -58,7 +58,11 @@ int	get_best_friend(t_node **head_a, int number)
 void	ten_or_more(t_node **head_a, t_node **head_b)
 {
 	float	mean;
+	int		moves_a;
+	int		moves_b;
 
+	moves_a = 0;
+	moves_b = 0;
 	while (length(head_a) > 5)
 	{
 		mean = mean_of_nodes(head_a);
@@ -69,6 +73,6 @@ void	ten_or_more(t_node **head_a, t_node **head_b)
 	}
 	five_numbers(head_a, head_b, 5);
 	while (length(head_b))
-		find_best_move(head_a, head_b);
+		find_best_move(head_a, head_b, &moves_a, &moves_b);
 	min_up(head_a);
 }

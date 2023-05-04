@@ -17,7 +17,6 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 # include "libft.h"
 
 # define INT_MAX  __INT_MAX__
@@ -35,12 +34,12 @@ void			swap_a(t_node **head_a);
 void			rotate_a(t_node **head_a);
 void			reverse_rotate_a(t_node **head_a);
 void			push_a(t_node **head_b, t_node **head_a);
-void			complement_to_push_a(t_node **head_b, t_node **head_a);
+void			complement_to_push_a(t_node **head_a, t_node *tmp);
 void			swap_b(t_node **head_b);
 void			rotate_b(t_node **head_b);
 void			reverse_rotate_b(t_node **head_b);
 void			push_b(t_node **head_a, t_node **head_b);
-void			complement_to_push_b(t_node **head_a, t_node **head_b);
+void			complement_to_push_b(t_node **head_b, t_node *tmp);
 void			both_swaps(t_node **head);
 void			both_rotates(t_node **head);
 void			both_reverse_rotates(t_node **head);
@@ -65,7 +64,10 @@ void			print_integer(int *content);
 float			mean_of_nodes(t_node **head);
 void			ten_or_more(t_node **head_a, t_node **head_b);
 int				get_best_friend(t_node **head_a, int number);
-void			find_best_move(t_node **head_a, t_node **head_b);
+void			find_best_move(t_node **head_a, t_node **head_b,
+					int *moves_a, int *moves_b);
+void			rest_of_cost_to_top(t_node **head_a, t_node **head_b,
+					int *moves_a, int *moves_b);
 unsigned int	absolute(int number);
 void			min_up(t_node **head_a);
 

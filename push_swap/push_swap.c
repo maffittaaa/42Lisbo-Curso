@@ -32,6 +32,7 @@ int	main(int argc, char **argv)
 		three_numbers(&head_a);
 	else
 		five_numbers(&head_a, &head_b, length(&head_a));
+	lstiter(&head_a, print_integer);
 	lstiter_node(&head_a, free);
 	return (0);
 }

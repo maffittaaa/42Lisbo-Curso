@@ -12,13 +12,18 @@
 
 #include "push_swap.h"
 
+int	is_three_sorted(t_node **head)
+{
+	return ((*head)->content < (*head)->nextinline->content
+		&& (*head)->content < (*head)->previnline->content
+		&& (*head)->nextinline->content < (*head)->previnline->content);
+}
+
 void	three_numbers(t_node **head)
 {
 	if (length(head) <= 1)
 		return ;
-	if ((*head)->content < (*head)->nextinline->content
-		&& (*head)->content < (*head)->previnline->content
-		&& (*head)->nextinline->content < (*head)->previnline->content)
+	if (is_three_sorted(head))
 		return ;
 	else if ((*head)->content < (*head)->previnline->content
 		&& (*head)->content < (*head)->nextinline->content)

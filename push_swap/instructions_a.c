@@ -46,14 +46,11 @@ void	push_a(t_node **head_b, t_node **head_a)
 	}
 	else
 		*head_b = 0;
-	complement_to_push_a(head_b, head_a);
+	complement_to_push_a(head_a, tmp);
 }
 
-void	complement_to_push_a(t_node **head_b, t_node **head_a)
+void	complement_to_push_a(t_node **head_a, t_node *tmp)
 {
-	t_node	*tmp;
-
-	tmp = *head_b;
 	if (length(head_a) > 0)
 	{
 		tmp->nextinline = *head_a;
