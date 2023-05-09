@@ -19,18 +19,18 @@ int	error_checker(int argc, char **argv, t_node **head_a)
 	i = 1;
 	while (i < argc)
 	{
-		if (isnumber(argv[i]) == 0 && printf("Error - Not a number\n"))
+		if (isnumber(argv[i]) == 0 && ft_printf("Error - Not a number\n"))
 			return (1);
-		if (ft_atol(argv[i]) > INT_MAX && printf("Error - big number\n"))
+		if (ft_atol(argv[i]) > INT_MAX && ft_printf("Error - big number\n"))
 			return (1);
-		if (ft_atol(argv[i]) < INT_MIN && printf("Error - small number\n"))
+		if (ft_atol(argv[i]) < INT_MIN && ft_printf("Error - small number\n"))
 			return (1);
 		i++;
 	}
 	i = 0;
 	while (++i < argc)
 		lstnew(head_a, ft_atoi(argv[i]));
-	if (isduplicate(head_a) == 1 && printf("Error - Duplicate numbers\n"))
+	if (isduplicate(head_a) == 1 && ft_printf("Error - Duplicate numbers\n"))
 		return (1);
 	return (0);
 }

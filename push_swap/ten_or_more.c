@@ -63,6 +63,8 @@ void	ten_or_more(t_node **head_a, t_node **head_b)
 
 	moves_a = 0;
 	moves_b = 0;
+	if (is_sorted(head_a))
+		return ;
 	while (length(head_a) > 5)
 	{
 		mean = mean_of_nodes(head_a);

@@ -19,6 +19,8 @@ void	five_numbers(t_node **head_a, t_node **head_b, int len)
 
 	max = find_max(head_a);
 	min = find_min(head_a);
+	if (is_sorted(head_a))
+		return ;
 	while (length(head_a) > 3)
 		push_b(head_a, head_b);
 	three_numbers(head_a);

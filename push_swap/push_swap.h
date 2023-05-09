@@ -17,7 +17,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft.h"
+# include "libft/libft.h"
+# include "ft_printf/ft_printf.h"
 
 # define INT_MAX  __INT_MAX__
 # define INT_MIN -2147483648
@@ -70,5 +71,6 @@ void			rest_of_cost_to_top(t_node **head_a, t_node **head_b,
 					int *moves_a, int *moves_b);
 unsigned int	absolute(int number);
 void			min_up(t_node **head_a);
+int				is_sorted(t_node **head);
 
 #endif
