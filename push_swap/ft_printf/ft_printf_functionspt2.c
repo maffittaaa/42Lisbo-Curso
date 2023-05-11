@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstsize.c                                          :+:      :+:    :+:   */
+/*   ft_printf_functionspt2.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpeixeir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:18:15 by mpeixeir          #+#    #+#             */
-/*   Updated: 2023/05/03 18:18:17 by mpeixeir         ###   ########.fr       */
+/*   Created: 2022/03/15 18:47:33 by mpeixeir          #+#    #+#             */
+/*   Updated: 2022/03/16 16:02:42 by mpeixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	lstsize(t_node **head)
+void	ftprtf_putchar_fd(char c, int fd, int *counter)
 {
-	t_node	*temp;
-	int		size;
+	write(fd, &c, 1);
+	*counter = *counter + 1;
+}
 
-	if (!*head)
-		return (0);
-	temp = (*head)->nextinline;
-	size = 1;
-	while (temp != *head)
+void	ftprtf_putstr_fd(char *s, int fd, int *counter)
+{
+	int	i;
+
+	i = 0;
+	if (s)
 	{
-		size++;
-		temp = temp->nextinline;
+		while (s[i] != '\0')
+		{
+			ftprtf_putchar_fd(s[i], fd, counter);
+			i++;
+		}
 	}
-	return (size);
+	else
+		ftprtf_putstr_fd("(null)", 1, counter);
 }

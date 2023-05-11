@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstsize.c                                          :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpeixeir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 18:18:15 by mpeixeir          #+#    #+#             */
-/*   Updated: 2023/05/03 18:18:17 by mpeixeir         ###   ########.fr       */
+/*   Created: 2023/05/09 19:15:55 by mpeixeir          #+#    #+#             */
+/*   Updated: 2023/05/09 19:15:57 by mpeixeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	lstsize(t_node **head)
+int	is_sorted(t_node **head)
 {
-	t_node	*temp;
-	int		size;
+	t_node	*tmp;
 
-	if (!*head)
-		return (0);
-	temp = (*head)->nextinline;
-	size = 1;
-	while (temp != *head)
+	tmp = *head;
+	while (tmp->nextinline != *head)
 	{
-		size++;
-		temp = temp->nextinline;
+		if (tmp->content > tmp->nextinline->content)
+			return (0);
+		tmp = tmp->nextinline;
 	}
-	return (size);
+	return (1);
 }

@@ -21,31 +21,17 @@ int	ft_atoi(const char *str)
 	neg = 1;
 	result = 0;
 	index = 0;
-	while ((str[index] >= 9 && str[index] <= 13) || str[index] == 32) // se for um espaco ou um tab etc, passa a frente
+	while ((str[index] >= 9 && str[index] <= 13) || str[index] == 32)
 		index++;
-	if (str[index] == '-' || str[index] == '+') //se o numero for negativo, tornamos positivo
+	if (str[index] == '-' || str[index] == '+')
 	{
 		if (str[index++] == '-')
 			neg *= -1;
 	}
-	while (str[index] >= '0' && str[index] <= '9') // se for um numero, str[index] = elemento que encontramos, result e a casa
+	while (str[index] >= '0' && str[index] <= '9')
 	{
 		result = (result * 10) + (str[index] - 48);
 		index++;
 	}
 	return (result * neg);
 }
-/*
-int main()
-{
-	char e[] = {9, 10, 11, 12, 13, 0};
-
-	if (ft_atoi((e + "--1")))
-		printf("WHAT\n");
-	if (ft_atoi((e + "++1")))
-		printf("THE\n");
-	if (ft_atoi("-+42") == 0)
-		printf("FREAKING\n");
-	if (ft_atoi("+-42") == 0)
-		printf("FUCK\n");
-}*/
