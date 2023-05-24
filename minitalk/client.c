@@ -1,27 +1,24 @@
-#include "minitalk.h"
+#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
 
-void    send_msg(int server_pid, char msg)
+char	g_counter = 0;
+
+void send_message_to_server(int pid, char *str)
 {
-    int bits;
+	int	i;
+	int	num;
 
-    bits = 7;
-    while (bits >= 0)
-    {
-        if (msg > bits)
-            kill(server_pid, SIGUSR1);
-        else
-            kill(server_pid, SIGUSR2);
-        sleep(50000);
-        bit--;
-    }
+	i = 0;
+	num = 0;
+	while (str[i] != NULL)
+	{
+
+	}
 }
 
-int check_input(int argc, char **argv)
-{
-    
-}
-
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 
 }
